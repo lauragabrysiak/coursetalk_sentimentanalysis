@@ -1,0 +1,2711 @@
+\documentclass[
+	a4paper,
+	pdftex,
+	12pt,	
+%	twoside, % + BCOR darunter: für doppelseitigen Druck aktivieren, sonst beide deaktivieren
+	footinclude=true,
+	fleqn,
+	final,
+%	abstracton,
+%	captions=tableheading
+	]{report}%scrreprt,article,scrbook,report, book
+%-----------------------------------------------------------------	
+\usepackage[utf8x]{inputenc}			% Input encoding: UTF8 and EU2 for German
+\usepackage{mathpazo,amsmath,amssymb,amsfonts,amsthm}    % Typical maths resource packages
+\usepackage{setspace}
+\usepackage{graphicx}                           % Packages to allow inclusion of graphics
+\usepackage[numbers]{natbib}                 % literature reference style %\usepackage[numbers][authoryear]
+%\usepackage[bf]{caption2}			%
+\usepackage{dashrule}				% For creating the signature dashrule
+\usepackage{parskip}
+\usepackage{fontenc}				% Font encoding
+\usepackage{fixltx2e}				%
+\usepackage{rotating}				% Package in charge of rotating figures 90/180
+\usepackage[table,xcdraw]{xcolor}		%
+\usepackage{booktabs}				%
+\usepackage{chngcntr}				% Continuous numbering of footnotes
+\usepackage[T1,OT1]{fontenc}
+\usepackage{tocloft}				% Make changes in Table of Contents
+\usepackage[automark]{scrpage2}			% define topline
+\usepackage[right=3.3cm,
+	    left=2.5cm,
+	    top=2.5cm,
+	    bottom=2.5cm,
+%	    includeheadfoot,
+	    width=16cm
+	    ]{geometry}                % Supress initial paragraph space
+\usepackage{titling} 	    
+\usepackage{titlesec}
+\usepackage{array}
+\usepackage{lipsum}
+\usepackage{scrpage2}
+%\usepackage[nodisplayskipstretch]{setspace}
+\usepackage[hang]{footmisc}
+%\usepackage[backend=bibtex]{biblatex}
+%\usepackage{fancyhdr}
+\usepackage{hyperref}                           % For creating hyperlinks in cross references
+%-----------------------------------------------------------------	
+\pagestyle{scrheadings} %scrheadings%plain,empty,fancy,myheadings, headings 
+\setcounter{secnumdepth}{5}
+\bibliographystyle{plain} 
+% -----------------------
+\setlength{\headheight}{1.5\baselineskip}
+
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{N}{@{}m{0pt}@{}}
+
+%\setstretch{1.5}
+\renewcommand{\baselinestretch}{1.5}
+\setlength{\belowdisplayskip}{0pt} \setlength{\belowdisplayshortskip}{0pt}
+\setlength{\abovedisplayskip}{0pt} \setlength{\abovedisplayshortskip}{0pt}
+\renewcommand{\labelitemii}{-}
+\renewcommand{\abstractname}{\LARGE\normalfont\sffamily Abstract}%\bfseries
+%\renewcommand{\tableofcontents}{\LARGE\normalfont\sffamily\bfseries Contents}
+%\renewcommand{\listoffigures}{\LARGE\normalfont\sffamily\bfseries List of Figures}
+%\renewcommand{\listoftables}{\LARGE\normalfont\sffamily\bfseries List of Tables}
+
+\renewcommand{\cfttoctitlefont}{\LARGE\normalfont\sffamily\bfseries}
+\renewcommand{\cftaftertoctitle}{\hfill\vfill}
+\setlength{\cftbeforetoctitleskip}{30pt}
+\setlength{\cftaftertoctitleskip}{30pt}
+
+%Page Numbering 
+\deftripstyle{pgnumbottomcenter}{}{}{}{}{\pagemark{}}{}
+\pagestyle{pgnumbottomcenter}
+\renewcommand{\chapterpagestyle}{pgnumbottomcenter}
+
+\newcommand{\hsc}[1]{{\large\MakeUppercase{#1}}}
+
+\renewcommand\cftchapfont{\normalfont\sffamily\bfseries}
+\renewcommand\cftchappagefont{\normalfont\sffamily\bfseries}
+\renewcommand\cftsecfont{\normalfont}
+\renewcommand\cftsecpagefont{\normalfont}
+\renewcommand\cftsubsecfont{\normalfont}
+\renewcommand\cftsubsecpagefont{\normalfont}
+\renewcommand\cftsubsubsecfont{\normalfont}
+\renewcommand\cftsubsubsecpagefont{\normalfont}
+
+\setlength\cftparskip{1pt}
+\setlength\cftbeforesecskip{1pt}
+\setlength\cftaftertoctitleskip{3pt}
+
+%Change Heading Fonts
+\titleformat{\chapter}{\normalfont\LARGE\sffamily\bfseries}{\thechapter}{1em}{}
+\titleformat*{\section}{\Large\bfseries\sffamily\bfseries}
+\titleformat*{\subsection}{\large\bfseries\sffamily\bfseries}
+\titleformat*{\subsubsection}{\normalfont\bfseries\subsubsectionfont\sffamily\bfseries}
+%\titleformat*{\subsubsubsection}{\normalfont\bfseries\subsubsectionfont\sffamily\bfseries}
+
+%\def\thesection{{section}}
+%\def\thesubsection{{subsection}}
+\def\thesubsubsection{{subsubsection}}
+%-----------------------------------------------------------------
+\makeindex
+%-----------------------------------------------------------------
+%	BEGIN -	TITLEPAGE
+%-----------------------------------------------------------------
+%-----------------------------------------------------------------
+\begin{document}
+\begin{titlepage}
+		\thispagestyle{empty}	
+		\newgeometry{top=1.8cm,left=2.3cm,right=2.3cm}
+		\begin{minipage}[c][3cm][c]{12cm}
+			\textsc{
+				\hspace{-0.4mm}{\Large Humboldt Universität zu Berlin}\\
+				\normalsize {Wirtschaftswissen­schaftliche Fakultät\\Institut für Informatik}}
+		\end{minipage}
+	\hfill
+		\begin{minipage}[c][3cm][c]{3cm}
+			\includegraphics[width=3cm]{img/husiegel.pdf}
+		\end{minipage}\\
+	\vspace{0.7cm}
+	\sffamily
+		\begin{center}
+			\vspace{\baselineskip}
+			{\LARGE \textbf{MOOC Interrupted \\ Determination of Disengagement Factors using Sentiment Analysis}}\\
+			{\Large
+			\vspace{0.7cm}
+				
+				\hsc{Masterarbeit}\\%\textsc{}\hsc{}			
+				zur Erlangung des akademischen Grades\\
+				Master of Science (M. Sc.)\\ \vspace{0.4cm}
+				in Wirtschaftsinformatik
+				}
+		\end{center}
+	%\vspace{2cm}	
+	\vfill
+		\begin{flushleft}\normalsize
+		\begin{tabular}[h!]{llcrr}%{tabularx}{\textwidth}
+		eingereicht von:& Laura Gabrysiak G\'{o}mez	& &Gutachter:	&Prof. Dr. Stefan Lessman \\
+		Matrikel-Nr:	& 555091			& &		&Prof. Dr. Niels Pinkwart \\
+		%geboren am:	& 16.05.1987	&		& \\
+%		geboren in:	& Havanna, Kuba	&		& \\
+		Adresse:	& Gerichtstr 12, 13347 Berlin	& &		& 	\\
+		Kontaktdaten	& gagomezl@hu-berlin.de		& &		& 	\\
+				& +49 17680400424	&	& &\\
+				&			& 	& &\\
+				&			& 	& &\\				
+		eingereicht am:	& 27.09.2016		&	& &\\%\hdashrule{4cm}{1pt}{1pt}\\
+		\end{tabular}
+		\end{flushleft}
+\end{titlepage}
+%-----------------------------------------------------------------
+%	BEGIN - DOCUMENT
+%-----------------------------------------------------------------
+\begin{abstract}
+\normalsize \sffamily
+
+\noindent
+Within the past few years, Massive Online Open Courses (MOOCs),
+have experienced a sudden rise in popularity, reaching thousands 
+of students across the globe and bridging limitations that 
+higher education has experienced until present. Despite the 
+great potential MOOCs represent to the future of global 
+education, a high drop-out phenomenon (96\%) has 
+been regularly reported over the years. 
+
+This thesis investigates this phenomenon and uses 
+Sentiment Analysis and other Text Mining techniques 
+to identify topics related to the student drop-out.
+An en-to-end framework is presented including
+data extraction and preparation, polarity classification 
+and feature selection. Using the proposed framework,
+topics related to student 
+dissatisfaction were found, supporting findings from previous
+studies. 
+
+Furthermore, quantitative text metrics were used to identify 
+linguistic patterns among dissatisfied students' reviews, 
+finding significant correlations with course features
+such as price, rating and polarity.
+\end{abstract}
+\addcontentsline{toc}{section}{\normalfont\sffamily Abstract}%\bfseries
+\newpage
+%-----------------------------------------------------------------
+\pagenumbering{Roman}%roman
+\setcounter{page}{1}
+%\doublespacing
+%-----------------------------------------------------------------
+\tableofcontents
+\newpage
+
+\listoffigures
+\addcontentsline{toc}{section}{\normalfont\sffamily List of Figures}%\bfseries
+\newpage
+
+\listoftables
+\addcontentsline{toc}{section}{\normalfont\sffamily List of Tables}%\bfseries
+\newpage
+
+\chapter*{List of Abbreviations}
+\vspace{-0.6cm}
+\begin{itemize}
+ \item MOOC - Massive Online Open Courses
+ \item SA - Sentiment Analysis
+ \item KDD - Knowledge Discovery
+  \item ML - Machine Learning
+ \item NLP - Natural Language Processing
+ \item POS - Part of Speech
+%  \item SVM - Support Vector Machine
+ \item TF-IDF - Term Frequency Inverse Term Frequency
+ \item MI - Mutual Information
+ %\item PMI - Point-wise Mutual Information
+ \item RegEx - Regular Expression
+ \item UX - User Experience
+ \item WC - Word Count
+ \item SC - Sentence Count
+\end{itemize}
+\addcontentsline{toc}{section}{\normalfont\sffamily Abbreviations}%\bfseries
+\singlespacing
+
+\newpage
+% \chapter*{Glossary}
+% \begin{itemize}
+%  \item Sentiment - Feeling, Attitude
+%  \item RegEx - Regular Expressions
+%  \item Semantic Orientation - Sentiment Analysis
+%   \item Polarity
+%  \item Sentiment
+% \end{itemize}
+% \addcontentsline{toc}{section}{\normalfont\sffamily\bfseries Glossary}
+% \singlespacing
+% \newpage
+%-----------------------------------------------------------------
+%	BEGIN: BODY
+%-----------------------------------------------------------------
+\setstretch{1.3}
+%-----------------------------------------------------------------
+\chapter{Introduction}
+\pagenumbering{arabic}
+\label{ch:intro}
+\vspace{-0.6cm}
+
+The year 2012 was not only considered to be the potential end of the world by the Maya, but it was 
+also considered to be the "year-zero"and baptized as \emph{the year of the MOOC} by The New York 
+Times \cite{Times2012}. Since then, MOOCs have received a lot of attention by the 
+media and within the educational field, considered by many as a new educational 
+format and disruptive catalyst capable of revolutionizing our current educational 
+system \cite{Christensen2013}. This thesis investigates the high drop-out phenomenon 
+associated with MOOCs by inferring disengagement factors applying Text Mining (TM) 
+techniques on a self-collected dataset of user-generated MOOC reviews. 
+%-----------------------------------------------
+\vspace{-0.45cm}
+\section{Massive Open Online Courses (MOOCs)}
+\label{sec:intro_mooc}
+\vspace{-0.3cm}
+
+The abbreviation MOOC stands for \emph{Massive Open Online Course(s)} and literally refers to 
+online courses with unlimited access to anyone
+with a consistent Internet connection that is willing to learn \cite{Open2014}. 
+Within the past few years\footnote{MOOCs date back to 2008 at their early beginnings however only reached a sudden hype at 
+2012 \cite{Haggard2013}.}, MOOCs have experienced a sudden rise in popularity and have 
+established themselves as a new educational format \cite{Hayes2015}. Unlike \emph{conventional} 
+online courses, MOOC show so far particular characteristics as the massive number of MOOC students 
+exceeds by far the size of traditional classes \cite{Koller2013}. Open education tools in 
+combination with the latest technological advancements allow professors and educational 
+institutions to reach a massive number of students across the globe. An example reflecting MOOC's
+impact is the case of MIT's first MOOC \emph{6002x: Circuits and Electronics} 
+which received over 150.000 registrants across 194 countries within the first days \cite{Ho2013a}. 
+Only 4.6\% reached to complete the course and get the certification, however but after all
+a massive number of 7.000 students obtained a certification from an elite university for 
+no monetary cost else than the invested time. MOOCs therefore allow students to overcome the main
+limitations that high education has traditionally presented e.g. geographic and economic barriers \cite{Russell2013}.
+Among the most prominent MOOC providers (i.e MOOC platforms) are Coursera, edX, Udemy etc. 
+Table \ref{t:14} and figure \ref{fig:10} show the main MOOC providers as well as 
+the main institutions offering the courses.
+
+\vspace{-0.3cm}
+\subsection*{The MOOC Drop-Out Phenomenon}
+\vspace{-0.3cm}
+
+However, despite the great adoption MOOCs have experienced, there is still room for 
+improvement \cite{Adamopoulos2013}. Among the main problems concerning MOOCs, a large drop-out 
+phenomenon has been identified over time \cite{Hayes2015}. 
+A standard 96\% drop-out rate has been confirmed by several investigations across all MOOC disciplines
+(see \cite{Haggard2013,Koller2013,Christensen2013}).
+For instance, already in 2012, the average Coursera MOOC enrolled between 40.000 to 
+60.000 students, from which only 60\% returned from the first lecture \cite{Koller2013}.
+This phenomenon has set an alarm within the educational community \cite{Hayes2015} and
+considering the great potential of this technology,
+\emph{it is the duty of the academic community to shed light on the problems of MOOCs, 
+trying to both understand their causes and help open education to achieve its potential 
+and not fail} \cite{Adamopoulos2013}. 
+
+However, the discussion around drop-out is not absolute.
+Creelman (2013) challenges the concept of drop-out metrics 
+and questions if, rather being a sign for deficient (course-) quality, 
+drop-out is just an expression of freedom of choice \cite{Creelman2013}. 
+Also, Koller et.al (2013) believe retention rates as irrelevant and object 
+that among students engaged \emph{to completing the course}, 
+the retention rate is actually very high \cite{Koller2013}. 
+Jordan et.al (2014) argues that quoting enrollment and completion figures of early MOOCs 
+(i.e. 96\% drop-out rate) as representative is misleading \cite{Jordan2014} as the MOOC market 
+is constantly evolving and the demand and offer relation has changed extensively 
+since 2012 \cite{Hayes2015}. In fact, there isn't yet an existing standardized definition 
+for the exact meaning of \emph{drop-out} so far known.
+The traditional understanding  of this metric is the 
+\emph{percentage of students that enrolled in a MOOC and did not completed it} \cite{Conole2013}.
+However Ho et.al (2013) conclude that certification (completion) 
+as a metric is misleading and even a counterproductive indicator of the 
+MOOC impact \cite{Ho2013}.
+
+Even if the majority of MOOCs do have completion rates less than 10\% of 
+those who enroll \cite{Koller2013}, the definition of completion rate according 
+to Jordan et.al (2014) should rather be \emph{the percentage of enrolled 
+students who satisfied the courses' criteria in order to earn a certificate} \cite{Jordan2014}.
+Simultaneously, Koller et.al (2015) remarks that retention should be always 
+measured within the context of the student's intend and questions if retention is even the right metric 
+to measure the success or quality of a course \cite{Koller2015}, also because students are 
+already benefiting in many ways by participating in the course even without completing the 
+assessments \cite{Koller2013}. Likewise Ho et.al (2013) abet to develop new metrics \emph{far beyond grades and course certification}
+to better capture MOOC usage \cite{Ho2013}. However, MOOC value assessment is a highly subjective and 
+complicated topic \cite{Russell2013}. Creelman (2013) suggests that some evaluation criteria could 
+be similar to the traditional syllabus assessment, while some extra metric(s) could be added such 
+as online environment's assessment \cite{Creelman2013}. 
+MOOC assessment however, goes hand in hand with the student's expectations \cite{Hayes2015} 
+and these need to be first measured in order to gain a better understanding on this subject.
+Overall, there is a fundamental need to developing better assessment metrics to 
+understand how learners are interacting with MOOCs \cite{Conole2013} and thus to 
+enable MOOC assessment and adapt MOOC design to the student's needs prior to 
+implementation \cite{Hayes2015}.
+
+Despite the large amount of studies forecasting drop-out \cite{Balakrishnan2013,Open2014,Wen2014}, 
+there is a lack of investigation around the motivation behind this phenomenon
+even though, only by comprehending the main causes underlying the high drop-out rates, 
+actionable solutions \cite{Adamopoulos2013} can be provided and the format of the courses can be 
+adapted to maximize its potential \cite{Hayes2015}. Building on the argument that different MOOC
+assessment metrics and techniques are needed \cite{Conole2013,Ho2013,Ho2013a,Hayes2015} 
+and given the lack of investigation around the reasons behind the drop-out 
+phenomenon \cite{Adamopoulos2013}, it is the motivation of this thesis to 
+investigate the drop-out phenomenon from the student's perspective. One way of 
+investigating student's perspective and expectation is by analyzing
+the students' opinions and behavior \cite{Rose2014}. 
+
+\vspace{-0.45cm}
+\section{Measuring Opinions: Sentiment Analysis}
+\label{sec:intro_sa}
+\vspace{-0.3cm}
+%---------------------------------------
+% Overall, there is a fundamental need to developing better assessment metrics to 
+% understand how learners are interacting with MOOCs \cite{Conole2013} and thus to 
+% enable MOOC assessment and adapt MOOC design to the student's needs prior to 
+% implementation \cite{Hayes2015}.
+%---------------------------------------
+
+Sentiment Analysis (SA)\footnote{As already stated at section \ref{ch:intro}, there is little standardization 
+within the field of Sentiment Analysis. Only few theoretical compilations have been provided by Liu (2012) \cite{Liu2012,Liu2012a} 
+and Pang (2002) \cite{Pang2008}.} is a technique used to classify texts based on 
+its \emph{sentiment}\footnote{The concept of \emph{sentiment} can be understood as 
+the attitude, feeling or emotional state of mind \cite{Liu2012,Fang2015}.} using several methods including 
+Text Mining (TM), Natural Language Processing (NLP), Information Retrieval (IR) or Machine Learning (ML) \cite{Fang2015}.
+In the latter case, SA can be perceived as a text classification task assigning a \emph{sentiment} to an \emph{opinionated} 
+textual utterance\footnote{A so called \emph{opinionated} text as the name implies, denominates a text, expression the author's 
+point of view and opinion. Such type of texts are part of our daily lives and range from a product/movie review to a 
+political manifesto.}. 
+
+Methodologically, SA represents a great alternative to survey-based studies
+or any field investigating human perception \cite{Taylor2012} as
+survey based studies yield rather scaled answers on a 
+\emph{pre-selected (biased), limited set of items} \cite{Shapiro1996}.
+Also questionnaires work by \emph{what you ask is what you get - principle}, 
+which limits a proper statistical analysis in both quality and size \cite{Mehl2006}. 
+This method was selected as it allows to collect insights at large scale and 
+discover behavioral and perception trends \cite{Pang2008}. 
+In fact, SA is vastly applied in diverse domains implying user research such as marketing, 
+socioeconomic studies, but also political sciences and law. For instance 
+SA has been vastly deployed in marketing to measure the perceptions or 
+misconception of products and services \cite{Ravindran2015}.
+Even the measurement of possible future customers' perception can be measured in order to find 
+opportunities in the market. In politics on the other hand, SA is often used to measure the 
+current perception of current political affairs for example in electoral campaigns 
+such as the US presidential campaign of Barack Obama in 2008 and 2012 which used 
+real time SA on Twitter data and Salesforce to extract key social trends that had 
+to be addressed \cite{Wang2012}. 
+
+SA will be used in this project together with other Text Mining techniques in order to
+classify the polarity of the investigated user reviews. Section \ref{sec:sa_theory} will
+provide a short introduction into this field and later in section (sec.\ref{ch:implementation})
+will explain how SA is implemented.
+
+\vspace{-0.45cm}
+\section{A Note on Terminology}
+\label{sec:intro_term}
+\vspace{-0.3cm}
+
+A terminological disagreement in the fields related to this thesis has been observed 
+throughout the compilation of this thesis as perhaps already noticed 
+from sections (sec.\ref{sec:intro_mooc}) and (sec.\ref{sec:intro_sa}). 
+Different \emph{pseudo-standardized} terms referring to the same concept are 
+to be found across the reviewed literature (sec.\ref{sec:literature}).
+A short elaboration on this matter is therefore needed, for the sake of clarity.
+
+In its summary on SA, Pang and Lee (2008) wrote an extra chapter about the
+incongruent terminology around his field \cite{Pang2008}. The terms: \emph{Opinion} (def. \ref{def:opinion}),
+\emph{Sentiment} and \emph{Subjectivity} are observed to be used very loosely 
+as well as the concepts: \emph{Opinion Mining}, \emph{Sentiment Analysis} and \emph{Subjectivity Analysis} 
+treated basically as synonyms \cite{Pang2008}. Within the scope of this thesis, the term
+\emph{Sentiment Analysis (SA)} will be used as the reference term for the technique
+and the term \emph{Polarity} as the binomial classification task (sec.\ref{sec:intro_sa}). 
+
+In the context of MOOCs, on the other hand, a similar phenomenon has been observed.  
+Overall, the concepts \emph{dropout/ drop-out}, \emph{completion/ non-completion}, 
+\emph{attrition}, \emph{retention}, \emph{commitment} and \emph{engagement} are 
+also used very loosely and treated as synonyms. Unlike in the case of SA \cite{Pang2008}, 
+in this case there is so far known no detailed study about the terminological usage in 
+this field yet. For the scope of this work, the term \emph{drop-out} 
+will be used as reference. 
+
+Furthermore, alongside orthographic inconsistencies, 
+the drop-out phenomenon is regarded from both
+perspectives: the \emph{retention} and the \emph{drop-out} side. For example:
+\emph{completion/ non-completion} or \emph{engagement/ disengagement}.
+Both perspectives \emph{might} refer to the same concept however, within the 
+scope of this thesis both perspectives are considered as different problems. 
+This is relevant because e.g. papers within the reviewed literature, taken as a 
+reference for this work (sec.\ref{sec:literature})
+have proposed a methodology to identify factors influencing student \emph{engagement} 
+\cite{Hayes2015,Adamopoulos2013} in order to solve drop-out in MOOC. 
+This thesis is focused on identifying \emph{disengagement}
+factors i.e. factors associated with student drop-out.
+
+\vspace{-0.45cm}
+\section{Thesis Structure}
+\vspace{-0.3cm}
+
+The thesis is structured as following: Chapter \ref{sec:literature} 
+provides an overview of related work around the drop-out phenomenon in MOOCs 
+and a short theoretical background for some of the techniques
+used in the implementation. Chapter \ref{ch:research} provides a description of 
+the thesis outline and contribution alongside the main assumptions 
+on which this approach relies. Also the research questions of this thesis
+are presented. Chapter \ref{ch:implementation} provides a detailed description 
+of the implementation. Starting with the data extraction and preparation until
+data transformation and polarity classification. 
+A descriptive data analysis as well as 
+a quantitative text analysis are presented. 
+The results of the polarity classification and the evaluation metrics so as 
+the identification of disengagement factors are presented are presented in chapter \ref{ch:discussion}
+along with a discussion around the results. 
+Finally, chapter \ref{ch:conclusions} sums up the findings and proposes 
+ideas for future work. All tables and images can be found in the Appendix section \ref{ch:appendix}.
+
+\chapter{Related Work and Background} %Reviewed iterature and Methodology
+\vspace{-0.6cm}
+\label{sec:literature}
+This chapter provides an overview on current literature mainly concerning the MOOC drop-out phenomenon
+and research done around this topic using Sentiment Analysis (SA) and Text Mining techniques. 
+First, a section on MOOC drop-out will be presented, differentiating the 
+reviewed literature according to research done focusing on the student's behavior and 
+projects focused on analyzing the student's opinions.
+A section on SA will follow, providing a short introduction into this field 
+so as a theoretical background of some of the techniques used for the implementation of this project. Finally, a 
+short description of two studies used taken as reference
+for this thesis will be provided. Table \ref{t:8} provides a short summary of some
+publications relevant to this thesis.
+
+\vspace{-0.45cm}
+\section{Research on MOOC Drop-Out Rates}
+\label{sec:mooc_research}
+\vspace{-0.3cm}
+Despite being such an early technology, there is a broad spectrum of research done around MOOCs. 
+In order to simplify the literature review, the different literature patterns observed were visualized (fig. \ref{fig:3}). 
+Two distinctive research streams can be observed within the literature. One group (top left of figure \ref{fig:3}) focuses on 
+the research of drop-out from a social perspective \cite{Haggard2013,Conole2013}, 
+using demographic data \cite{Ho2013,Ho2015a,Hansen2015,Christensen2013}
+and analyzing the student's behavior. The other main group (top right of figure \ref{fig:3})
+focuses on the research of drop-out using textual data to analyze the student's opinion.
+
+By identifying the MOOCs target group and their motivation to participate in the courses
+\cite{Hayes2015,Ho2013,Ho2015a} the first group pursues to understand the adoption 
+of this new technology by society \cite{Russell2013}. A critical part of this research stream 
+relies on demographic data which very often is lacking due to the conceptualization of 
+many MOOC platforms \cite{Christensen2013}. Therefore surveys \cite{Christensen2013,Haggard2013} 
+and alternative methods \cite{Rose2014,Hansen2015} have to be adopted. 
+Section \ref{subs:mooc_participants} will shortly present some insights 
+from this research group. Most of the research done by the second group uses different data sources ranging from clickstream and log data 
+to textual data from forum entries and user reviews. Also, Machine Learning (ML) methods (mostly supervised) are commonly used 
+to predict the student's probability of dropping out the courses \cite{Balakrishnan2013,Taylor2012,Wong2015}. 
+For the scope of this thesis, it will be differentiated between groups based on the nature of their research and 
+the type of data used. On the one side, 
+research using clickstream and log data \cite{Balakrishnan2013,Open2014,Wen2014} and on the other hand, 
+research using mainly textual data: either log data, forum entries or textual reviews) \cite{Adamopoulos2013,Taylor2012,Rose2014,Onah2014,Wong2015,Wen2014a,Stump2013,Wen2014}.
+The latter is the main focus for this project. Furthermore, MOOC unrelated review research \cite{Pang2002,Pang2008} will be also presented as
+the it handles the same type of data (user reviews) and methodologies used in this thesis.
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.43]{./lit_rev.png}
+ \caption[Literature main research streams]{Structured overview of the main literature streams. Source: Author's own representation.} %Source: Author's representation
+ \label{fig:3}
+\end{figure}
+
+\vspace{-0.45cm}
+\subsection[Investigating Learner's Behavior]{Understanding Drop-Out through Learner's Behavior}%Quantifying User Research: Who and Why, Characteristics and Motivation
+\label{subs:mooc_participants}
+\vspace{-0.3cm}
+
+A great debate is taking place about the social impact of this technology and the \emph{disruptive 
+nature} of MOOCs \cite{Russell2013} capable of redesigning our current educational system as we know it.
+Understanding who is the target group and its main characteristics is the key to adapt MOOCs to the end user's needs
+\footnote{Speaking about a \emph{target group} in this context abuts against one of the MOOCs principles (openness).
+\cite{Creelman2013} argued that there is \emph{no target group as everybody is welcome as part of the MOOC principles}.
+However, studies based on demographic data \cite{Ho2013,Ho2015a} and surveys\cite{Christensen2013,Conole2013} 
+does show a rather homogeneous group participating in MOOCs \cite{Russell2013}. 
+The concept target group refers to this representative group in this context}. However, this can be very challenging as, in contrast to the massive 
+data recorded about the participation logs, there is a lack of user demographic \cite{Hansen2015} 
+that can be used to inquire their motivation for participation or dropping-out.
+
+Christensen et.al (2013) ran a survey on 32 MOOCs with a total of 34,779 responses in order to 
+find out exactly these informations. This was one of the first efforts in constructing a dataset to 
+investigate the so called \emph{MOOC population}\footnote{ 
+Although the responses represented approx. (8.5\%) and thus suggested a strong 
+selection bias, the study did provide a first insight on the motivation of the students which turned out to 
+be on its larger extent full time employed alumni and not young students as was assumed.
+}. The same year and later in 2014, edX published a similar study however in much larger scale \cite{Ho2013,Ho2015a}
+resulting in one of the largest surveys of massive open online courses (MOOCs) to date \cite{Ho2015a} with 
+597,692 unique users analyzed the first year (2013) and 1.7 Mio observations\footnote{specifically 68 courses, 1.7 million participants, 10 million 
+participant- hours, and 1.1 billion logged events.} a year later \cite{Ho2015a}. 
+Both studies found young professional to be using this technology 
+the most \cite{Christensen2013,Ho2013}. Given the massive students numbers
+a large demographic difference was observed\cite{Ho2015a} although
+many students were US based (16\%-36\%). 
+Even though if the enrollment is possible throughout the entire course,
+the first week was found to be critical as the majority will enroll however
+around 50\% of the students are very likely to drop-out \cite{Ho2013}.
+
+However these type of studies are rather sparse as useful data is not made available
+by the MOOC providers. As a result, many (independent) researchers have 
+to enroll in the courses to get access to the data for each course (e.g. \cite{Adamopoulos2013}), 
+which hinders a large scale quantitative study \cite{Taylor2012}. 
+
+Therefore, alternative methods have to be adopted in order to study the student's behavior. 
+Kizilcec et.al (2013), Wong et.al (2015) and Anderson (2014) use forum entries in order 
+to investigate user interactions within the course, finding behavioral patterns called
+\emph{subpopulations} \cite{Kizilcec2013}. Also Anderson (2014) defines different 
+behavior roles (\emph{Bystander, Viewer/ Collector, All-rounder, Solver}) 
+and investigates the chronological development of their posting behavior 
+with regard to their course performance. However this type of research does not provide 
+insight on the reasons why students drop-out. Therefore a goal is to investigate 
+not only the students behavior but also their opinions.
+
+\vspace{-0.45cm}
+\subsection[Investigating Learner's Opinions]{Investigating Drop-Out through Learner's Opinions}
+\vspace{-0.3cm}
+
+One way studying student's opinions is using user-generated textual data and linguistic metrics
+in order to extract information around the user's behavior and mindset \cite{Mehl2006,Fang2015}.
+Furthermore, textual data offers a multidimensional analysis\cite{Liu2010}, 
+providing not only the textual content but also additional features e.g. 
+analytical, semantic and syntactic features. There are two main streams 
+among the reviewed literature focused on textual analysis. One group
+uses mostly forum entries (already presented above) and the second user-generated reviews. 
+The latter group, although much smaller, will be of great interest and the baseline for this work.
+
+When trying to obtain an insight into the users behavior, forum entries 
+and review data have been a commonly used as source to mine opinions \cite{Fang2015,Pang2002,Pang2008,Rose2014,Adamopoulos2013}
+as they are created spontaneously and charged with personal assessment (sentiment) \cite{Liu2012}. 
+Forum entries on the one hand, have the advantage that are written alongside
+the course pace \cite{Rose2014} so that a chronological documentation is possible, 
+allowing the MOOC designer to quickly spot out and forecast possible dropouts \cite{Wen2014}. 
+However, forum entries have the disadvantage of being subject to selection bias 
+as students who post on forums are mostly very engaged with the course (\emph{Solvers}) \cite{Anderson2014} 
+and are therefore not representative \cite{Wen2014a} to all students. Also, forum entries are very sensitive 
+to their time frame context as time distorts the data so that e.g. many posts are predominantly 
+negative messages as they are meant as a feedback mechanism not an overall course assessment \cite{Wen2014}. 
+
+Reviews on the other hand, are more extensive and better structured \cite{Liu2012}. Also,
+as they do are purposely written in order to provide an overall assessment \cite{Devi2012} 
+they ease the information extraction process\cite{Pang2002}. Furthermore, reviews commonly provide 
+additional information useful for the data analysis e.g. the combination of starring (quantitative) 
+and textual information (qualitative)\cite{Liu2012}. Nevertheless, aside from the subjectivity 
+and the selection bias phenomenon characterizing natural language \cite{Liu2012}, 
+textual reviews are also more complex and more difficult to analyze \cite{Pang2002}. 
+For instance many complex language phenomena such as negations, sarcasm/irony and humor 
+are very difficult to process \cite{Pang2008}. However there are some techniques
+from Natural Language Processing (NLP) and Text Mining (TM) allowing to extract insights from textual information. 
+Next section will provide an overview of the TM techniques that were used in this project.
+
+\vspace{-0.55cm}
+\section{Text Classification and Text Mining}
+\label{sec:sa_theory}
+\vspace{-0.3cm}
+
+This section will provide a short introduction to some
+text processing and statistical techniques used in 
+text classification and implemented in this thesis.
+First a short introduction to Sentiment Analysis (SA) will be
+provided followed by an overview of some techniques 
+and approaches used in SA and TM in general such 
+as Document Term Matrix and TF-IDF weighting. 
+
+\vspace{-0.45cm}
+\subsection{Sentiment Analysis (SA)}
+\label{sec:sa_research}
+\vspace{-0.3cm}
+This section provides an short theoretical introduction\footnote{
+For a more detailed theoretical introduction please refer to Liu (2012 and Pang (2002).} 
+to SA starting with a formal framework provided by Liu (2012) \cite{Liu2012a}
+followed by some concepts of SA such as tasks and analysis levels. 
+
+Information can be differentiated into \emph{facts} and \emph{opinions} \cite{Liu2010}. Contrary 
+to facts, opinions are individual assessments that range in matters of objectivity 
+and polarity \cite{Liu2012a}. We can define an opinion according the 
+definition provided by Liu (2012) \cite{Liu2012,Liu2012a,Liu2004}\footnote{
+Although there are many definitions provided throughout the literature, Liu and Fang have provided
+a thorough theoretical compilation on the different aspect of the study of Sentiment Analysis.
+There are several variations of the definition of an Opinion however these all concur mathematically \cite{Liu2010}.
+For further details or comparison refer to \cite{Liu2012a,Liu2012}.}
+An \emph{opinion} is then uttered when a person (\emph{Holder}) expresses his positive or negative view (\emph{Sentiment}) 
+about something (\emph{Target}) at a certain moment (\emph{Time}). These 4 elements are essential and are considered to 
+be the minimal information necessary to successfully recognize and classify an opinion \cite{Liu2012a}.
+This definition can be expanded according with the classification task. For instance, this minimal 4-tuple 
+does not differentiate between the place or the gender of the opinion holder because they are not relevant 
+in this case. %Some of the elements can be extracted as so called "meta-information". That, not directly in the text stated but from meta-annotations. That is the case of the Opinion Holder and Time this project. 
+The reason why we use this format is because it helps to provide a structure 
+to the textual (unstructured) data enhancing the automatic text processing and information extraction. 
+
+Furthermore, according to Liu (2012) an \emph{Opinion} can be mathematically defined as the minimal 4-tuple:
+\begin{center}
+\textit{Opinion} = $\langle$ $\underbrace{T_{i}}_{\text{Target}}$,\hspace{0.3cm} S$_{ijk}$, \hspace{0.3cm} H$_{j}$,\hspace{0.3cm} t$_{k}$  $\rangle$
+\end{center}
+\label{def:opinion}
+
+\begin{flushleft}
+\begin{center}
+\begin{tabular}{p{0.5cm}p{13cm}}
+Where: & \\
+\textit{T$_{i}$}: & Refers to the \textit{Target} of the opinion\\
+\textit{S$_{ijk}$}: & Refers to the \textit{Sentiment} about the target\\
+\textit{H$_{j}$}: & Refers to the \textit{Holder}\\
+\textit{t$_{k}$}: & Refers to the \textit{Time} when the opinion was expressed.\\
+\end{tabular}
+\end{center}
+\end{flushleft}
+
+%-----------------------------------------------------------------
+\vspace{-0.45cm}
+\subsubsection*{Sentiment Analysis: Tasks and Levels}
+\label{sec:sa}
+\vspace{-0.3cm}
+Sentiment Analysis (SA) refers to a set of classification tasks based on 
+a text's sentiment \cite{Pang2008} such as the
+measurement of a text's \emph{polarity}, (i.e. if the text is negative, neutral or positive) 
+or the identification of a text's specific mood e.g. \emph{happy}, 
+\emph{angry} or \emph{frustrated}. A further task is e.g. the measurement 
+of the text subjectivity, (i.e how subjectively is the text written?)  
+Other authors including \cite{Serrano2015} also differentiate between the task 
+of extracting texts representing a certain mood (\emph{Opinion Retrieval}) or
+recognizing if a text contains sarcasm or irony 
+(\emph{Sarcasm and Irony Identification}). For the scope of this thesis however 
+only polarity classification is relevant (and needed).
+There are three main
+levels in SA: \emph{document} (or multi-document) level, 
+\emph{sentence} level and \emph{aspect based} SA. The latter surpasses
+the scope of this thesis thus we will concentrate of the first two levels.
+There are several Text Mining techniques, for processing \emph{opinions} 
+according to the analysis \emph{levels} and the context 
+of the classification problem \cite{Pang2002}. For instance,
+many investigations using product reviews \cite{Devi2012,Ye2009,Strapparava2015}
+are rather analyzed at a sentence level or even based on its \emph{aspects} as 
+the topic and the polarity diverges from sentence to sentence \cite{Pang2002}.
+
+As many classification tasks, SA is defined by the classification method and the feature selection \cite{Liu2010}. 
+Following section will provide a short overview of the most important topics around these two elements: 
+Figure (f.\ref{fig:6}) provides a conceptual map with an overview of the most prominent features, 
+feature selection methods and classification models around the SA field\footnote{This conceptual map was inspired 
+by Medhat et.al (2014) and extended with the features and feature selection methods, in an effort 
+to provide a yet more general graphical taxonomic overview of the SA field.}
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.44]{./SA_Methods_v2.png}
+ \caption[Main techniques and models related to Sentiment Analysis]{\small \centering Overview of the main techniques and models of Sentiment Analysis. This representation was created by the author inspired by \cite{Medhat2014} representation.}
+ \label{fig:6}
+\end{figure}
+
+Every method or feature is selected depending on the context and the nature of the classification task \cite{Liu2012}
+however, neither the methods nor the features are exclusively separated as there are many hybrid methods proposed
+throughout the SA community \cite{Liu2012a,Serrano2015}. As diagram \ref{fig:6} shows, we can differentiate between 
+supervised and unsupervised classification methods. Supervised classification refers to providing the model with a 
+set of manually labeled examples to exemplify how the model (\emph{the decision maker}) should behave \cite{Manning1999}. 
+A majority of the reviewed research (sec.\ref{ch:intro}) proposes supervised methods\footnote{Look up table (tab.\ref{t:8}) for an overview} 
+Supervised polarity classification can be thus interpreted is a multi-class learning 
+problem of 3 classes: a text can be either positive, neutral or negative.
+\vspace{-0.5cm}
+\begin{center}
+\[
+    f(W)= 
+\begin{cases}
+    -1 			& \text{if negative polarity,  i.e. } Majority(W) \in Dict_{NEG} \\
+     0,              	& \text{otherwise}\\
+     1,			& \text{if positive polarity,  i.e. } Majority(W) \in Dict_{POS}
+\end{cases}
+\]
+\end{center}
+Some approaches \cite{Rose2014,Adamopoulos2013,Pang2008} leave out the neutral class performing binomial classification, 
+however it has been proven \cite{Serrano2015,Medhat2014} that the introduction of a neutral class enhances the classifier 
+accuracy\footnote{The research proved that the introduction of a neutral class increased the accuracy for Naive Bayes and SVM.}.
+Inquiring into the theoretical details of the classification models however surpasses the scope of this thesis
+as the focus of the implementation is the identification of disengagement factors rather than the
+polarity classification itself. 
+% For the polarity classification of the reviews, a
+% lexicon-base method has been implemented for the training set labeling 
+% which will be shortly presented within the next sections. 
+
+\vspace{-0.45cm}
+\subsubsection*{Common Features and Feature Selection Methods} 
+\vspace{-0.3cm}
+Features are key informations that help the model to make the 
+rightful decision therefore the rightful selection
+is a core aspect in every machine learning task. 
+According to Liu et. al (2012) and Pang et. al (2002), 
+among the most popular features used in SA are Term Frequency (TF), 
+Term Presence (TP), Part of Speech (POS), Negations and Opinion 
+Words \cite{Pang2002,Liu2012a}. These features will be described 
+alongside the text pre-processing and transformation steps in 
+chapter \ref{ch:implementation}. Moreover, section \ref{sec:results} describes 
+the feature selection approach used for the polarity classification. One approach 
+of measuring the TF or TP of Opinion Words is the usage of pre-defined Opinion Lexicons
+instead of extracting the features from the text. Next section will provide a short
+introduction to the implemented Opinion Lexicon.
+\vspace{-0.45cm}
+\subsubsection*{Opinion Lexicons} 
+\label{sec:resources}
+\vspace{-0.3cm}
+Pre-defined sentiment lexicons are a commonly used method
+(e.g. \cite{Liu2004,Turney2002,Adamopoulos2013,Fang2015}), and the basis for many SA 
+applications \cite{Potts2011}. Several opinion dictionaries and other similar 
+lexical resources\footnote{Please refer to \cite{Strapparava2015,Potts2011} for a detailed
+list of linguistic resources related to sentiment emotion in language} available in the Internet
+include: \emph{Bing Liu's Opinion Lexicon}, the \emph{MPQA Subjectivity Lexicon}, \emph{SentiWordNet},
+\emph{LIWC} and \emph{Harvard General Inquirer}. For the scope of this thesis we make use of \emph{Bing Liu's Opinion Lexicon} \cite{Liu2004}
+and thus these lexical resources won't be covered in this section as it would surpass the scope of this thesis.
+
+\emph{Bing Liu's Opinion Lexicon}\footnote{Source:\url{http://www.cs.uic.edu/~liub/FBS/opinion-lexicon-English.rar}. See
+files submitted with the thesis [\texttt{positive-words.txt}] and [\texttt{negation-words.txt}]}
+is a compilation of a list of negative and positive words developed over several years starting from 2004 \cite{Liu2004,Liu2012a}. 
+The corpus was compiled using Amazon reviews \cite{Liu2010,Fang2015} and currently includes
+a total of 6,800 sentiment words (2,006 positive and 4,794 negative words). Although this corpus has several drawbacks such as the indiscrimination of the tokens sentiment strength\footnote{Liu's lexicon 
+provide a binomial categorization whereas other resources such as WordNet and SentiWordNet provide a 
+continuous sentiment score. MPQA on the other hand provide binomial categorization with strength categories (weak/strong)
+Lookup \url{http://sentiment.christopherpotts.net/lexicon/} for a demo comparing the former mentioned lexical resources based 
+on a token's sentiment.}, it does include helpful features such as possible misspellings, morphological variants, slang, and social-media mark-up.
+Another advantage is that this lexicon is maintained and freely available\cite{Liu2004} which allows the replication and rescaling of this project.
+% \vspace{-0.45cm}
+% \subsubsection*{Handling Negations}
+% \vspace{-0.3cm}
+% Negations are a special case and have been long time a difficult element in NLP \cite{Liu2012,Manning2008}. 
+% Semantically, Negations belong to the class of "opinion shifters"\footnote{Also Valence shifters.} as they 
+% are used in order to express the opposite of an utterance. Approaches such as \cite{Fang2015} (NOT\_, differentiation of NOA, NOV)
+% and \cite{Liu2012a}. Lexically, \emph{negation words} such as \emph{not, never, none, nobody, nowhere, 
+% neither and cannot} are the most commonly used \cite{Liu2012} as features. However negations are difficult to 
+% handle properly as there are many exceptions. See for instance the word \emph{not} in the phrase 
+% \emph{The course was not expensive at all} or the word \emph{not} in the commonly used phrase 
+% \emph{Not only the teacher provided good examples but also he was funny}. Handling negations is 
+% has become a well-studied field in Sentiment Analysis however a deep analysis of negations would 
+% surpass the scope of this project. Section \ref{sec:text_normalization} explains in detail
+% the preparation step applied on the reviews. In the scope of this work and following
+% Pang et al (2002) approach, negations are measured via TP with 
+% a \emph{Negation Score} \cite{Pang2002}. 
+
+\vspace{-0.45cm}
+\subsection{Lexical Analysis Techniques}
+\vspace{-0.3cm}
+The approach of this implementation is to first detect 
+reviews describing student dissatisfaction 
+e.g based on completion rate or 
+based on review polarity to 
+terms related to student disengagement.
+The identification of disengagement factors is 
+performed by identifying class-descriptive terms 
+i.e characteristic terms to reviews from students
+that have dropped out the course or provided
+negative reviews.
+
+There are several Text Mining techniques
+for measuring term salience or ranking
+e.g for Topic modeling such as \emph{Term Frequency - Inverse Document Frequency (TD-IDF), 
+Point-wise Mutual Information (PMI), LDA }.
+The TF-IDF weighting approach has been selected 
+for this implementation. This section will
+shortly present the TF-IDF measurement as well as the 
+Document Term Matrix (DTM) 
+technique which is required to 
+calculate the term's salience.
+
+\vspace{-0.45cm}
+\subsubsection*{Document Term Matrix (DTM)}
+\label{sec:tdf} 
+\vspace{-0.3cm}
+
+This section will introduce the theoretical background of the \emph{TF-IDF} weighting and the 
+\emph{Document Term Matrix} (DTM), implemented later in this project. 
+The abbreviation (\emph{TF-IDF}) stands for \emph{Term Frequency - Inverse Document 
+Frequency} and refers to a quite common technique used in the fields of Information Retrieval
+and Text Mining in order to provide term\footnote{For consistency reasons, the concept \emph{term} 
+is adopted in this thesis as \cite{Pang2002} use it in its paper. The term \emph{term} equals the 
+concepts \emph{word} and \emph{token}.} weighting/ranking in a document collection (i.e. a corpus). 
+This measure can be calculated after converting a corpus into 
+a \emph{Bag of Words} (BoW) model \cite{Manning2008} and 
+later into vector space model using the \emph{Document Term Matrix} (DTM). 
+These terms will be shortly presented as they represent the base for all
+Text Mining techniques implemented in this thesis.
+
+The \emph{Bag of Words} (BoW) model consist in converting a document \emph{$d_{i}$} into a set 
+of all terms contained in it (i.e. \emph{$d_{i} = \{t_{1},...,t_{z}\}$}). 
+The term's order, syntactic function (i.e. POS) or semantic annotation are disregarded in 
+the process \cite{Manning2008}.
+Based on the later, a DTM is finally constructed for the whole 
+corpus (i.e for every document \emph{$ d_{i}  \in \text{corpus} D$}). 
+Below a short formal description of a DTM \footnote{In their paper,\cite{Pang2002} Pang et. alrefers to it as the Bag-of-Features Model.} 
+provided by Pang et.al (2002) is presented. Given a Bag of Words model - \emph{BoW ($d_{i}$)}:
+
+Let (\emph{$D = \{d_{1},..., d_{i}\}$}) be a corpus (i.e. a review collection), 
+compound by a pre-defined set of reviews \emph{$d_{i}$} and (\emph{$T = \{t_{1},..., t_{m}\}$}) 
+a predefined set of \emph{m} terms (i.e. features) that can 
+appear in a review (\emph{$d_{i}$}) e.g.\emph{"course"} or \emph{"great course"}. 
+Each review \emph{$d_{i}$} is then represented by a vector \emph{$\vec{d_{i}}$}, 
+where each feature's value is a term weight. The term weight can be either:
+a binary value (i.e. [0,1] Term Presence - TP), a term frequency value (i.e. Term Frequency - TF) or 
+a TF-IDF ($TF\timesIDF)$) value. The latter value will be used in the thesis implementation 
+and explained later. Let \emph{$n_{k}(d_{i})$} be the number of times that \emph{$t_{k}$} occurs 
+in review \emph{$d_{i}$}, the resulting DTM is a two-dimensional matrix whose rows are 
+the review vectors ($\vec{d_{i}}$) and columns the term set (\emph{T}), 
+each element representing a term's TF \cite{Pang2002}:
+$d_{i}} := (n_{1}(d_{i}), n_{2}(d_{i}),..., n_{m}(d_{i}))$
+
+\vspace{-0.45cm}
+\subsubsection*{Term Frequency - Inverse Document Frequency (TF-IDF)}
+\label{sec:tfidf} 
+\vspace{-0.3cm}
+
+The TF-IDF weighting is a normalized measure of term frequency 
+combining TF and IDF in order to express a terms salience within 
+the class. Moreover, TF-IDF is given by:
+\begin{equation}
+\begin{gathered}
+TF\text{-}IDF(t_{m},d_{i},D) = TF(t_{m},d_{i}) \times IDF(t_{m},D) 
+\end{gathered}
+\end{equation}
+The Inverse Document Frequency (IDF) reflects the relevance of a term 
+\emph{$t_{m}$} in a review within a corpus \emph{D} \cite{Manning2008}. 
+IDF is used to several areas e.g. Information Retrieval to discriminate
+term (word) relevance and attenuate the effect of too frequent
+terms \cite{Manning1999}.
+\vspace{-0.2cm}
+\begin{equation}
+\begin{gathered}
+IDF(t_{m}, D) = log \frac{N}{1 + \mid\{ d_{i} \in D : t_{m} \in d_{i} \}\mid}
+\end{gathered}
+\end{equation}
+Where the numerator \emph{N} refers to the number of document in a corpus \emph{D} and 
+\emph{$\mid\{d_{i} \in D : t_{m} \in d_{i} \}\mid$} refers to the number of documents where the term \emph{$t_{m}$} appears. 
+The denominator is adjusted (i.e $+ 1$) in order to avoid a zero division in case that $\emph{t} \notin \emph{D}$.
+These techniques will be applied in the project implementation (sec.\ref{sec:preprocess}). First 
+The DTM is used to convert a corpus (i.e a collection of text 
+in this case reviews) into a feature space vector. The TF-IDF weighting is 
+used in order to provide a normalized frequency measurement (sec.\ref{sec:tdf}). 
+% The next approach (PMI) is a TM technique measuring the statistical association 
+% between a term and a class.
+% \vspace{-0.45cm}
+% \subsection*{Pointwise Mutual Information (PMI)}
+% \vspace{-0.3cm}
+% 
+% Pointwise Mutual Information is a useful technique commonly used in Information 
+% Retrieval (IR) in order to measure the statistical association between a word and 
+% a class \cite{Manning1999}. This measure can be interpreted as 
+% the reduction of uncertainty about one random variable given the knowledge of event \cite{IT1991}.
+% In this case we can interpret this measure as how certain are we about
+% a document class given a word. Unlike e.g. Pearson's correlation, MI measures 
+% the degree of statistical association between two categorical 
+% variables e.g. terms \cite{Liu2012} by measuring the 
+% co-occurrences in a given dataset assuming the features 
+% are independent from each other \cite{Manning1999} ranging from (0,$\infty$), 
+% meaning PMI = 0 a total independence of both features. PMI is measured:
+% 
+% \cite{Cosma2016}:
+% \begin{equation}
+% PMI(t,c_{i}) = log \frac{Pr(t,c_{i})}{Pr(t)*Pr(c_{i})} 
+% \end{equation}
+% 
+% Where the numerator ($Pr(t,c_{i})$) refers to the probability of the
+% features co-occurring i.e. the probability of term \emp{t} appearing 
+% in class $c_{i}$ in relation with the separate probability ($Pr(t)*Pr(c_{i})$)
+% of each feature of not co-occurring i.e. of independence.
+% This technique will be used in the implementation to 
+% measure term class dependencies (sec.\ref{sec:disengaged}).
+
+\vspace{-0.45cm}
+\section{Publications taken as Reference}%Previous research relevant to this thesis
+\label{sec:rel_investigations}
+\vspace{-0.3cm}
+Following section will present two investigations that resulted of great interest for 
+this thesis as they are closely related to this thesis in terms of topic and methodology.
+The first paper (Adamopoulos, 2013) intended to find MOOC engagement factors using user generated reviews. 
+The second paper (Fang \& Zhan, 2015)} focuses on tackling down the
+text polarity classification problem using Amazon product reviews. 
+The main approach used in the investigations so as the main drawbacks 
+will be shortly presented.
+
+\vspace{-0.45cm}
+\subsection{Adamopoulos (2013)}
+\label{sec:adamp}
+\vspace{-0.3cm}
+Adamopoulos pursues to identify determinants affecting \emph{retention} in 
+MOOCs \cite{Adamopoulos2013}. The study design combined 
+econometric methods, text mining and predictive modeling. 
+In order to identify the retention determinants, 
+Adamopoulos analyzes the opinion of students 
+by measuring the reviews polarity. 
+Only reviews of students who had completed or dropped the 
+course were analyzed with the main focus on the 
+\emph{completed} category \cite{Adamopoulos2013}.
+A pre-defined set of features were grouped as a set of characteristics in
+the following classes: course-, student's, platform's and universities' 
+characteristics. Also a pre-defined set of observed topics were
+included into the analysis. After measuring the class' respective (average) 
+sentiment score, their respective impact on course completion 
+was measured with a logit linear fitted model. The factors \emph{Professor} 
+\emph{Assignments} and \emph{Learning Materials} were found to have the largest impact
+on the completion rate. On the other hand, \emph{Discussion Forum} was identified as 
+having the greatest significant negative impact \cite{Adamopoulos2013}.
+The factors were then used in a predictive model using a classifier based on
+Random Forest \cite{Adamopoulos2013}.
+
+This study was one of the first to combine Text Mining techniques and econometric 
+analysis so far known. It also helped to start a necessary dialogue on the need of
+investigating the motivation behind the drop-out phenomenon rather than predicting it (sec.\ref{sec:intro_mooc}). 
+However, the study had some drawbacks that should be addressed.
+On the one hand, a replication of this study is very difficult due to 
+several reasons. First, the data collection and preparation was partly 
+done manually. The data was reported to be gathered manually
+via course enrollment and interaction with MOOC 
+students via survey \cite{Adamopoulos2013}. Also, the final dataset comprised a 
+combination of several data sources (\emph{data triangulation} \cite{Adamopoulos2013}) 
+that is very difficult to reproduce. Likewise, the data annotation and the identification of the engagement 
+factors was also done manually based on observations\footnote{For the purpose of the study, the author enrolled in several MOOCs and 
+collected the data via surveys (demographic data) and assessment reviews \cite{Adamopoulos2013}.
+} done by the author. Secondly, the text pre-processing step was also not 
+described with enough detail so that the data preparation could be 
+replicated. This lead to the motivation of design
+a scalable and unbiased study easy to be replicated in the future.
+
+Furthermore, Adamopoulos approach targets the completion class
+and identifies factors influencing completion rate
+whilst this thesis targets specifically the drop-out class in order 
+to identify factors related to student disengagement.
+Nevertheless, this paper was chosen as a reference due to the
+study design and the similarity of the investigated 
+topic and data source used even though if the results 
+cannot be directly compared.
+
+\vspace{-0.45cm}
+\subsection{Fang \& Zhan (2015)}
+\label{sec:fang}
+\vspace{-0.3cm}
+
+Fang \& Zhan's (2015) paper investigated the text polarity problem \cite{Fang2015}, 
+performing review and sentence polarity classification on a large dataset of 3 million 
+Amazon product reviews. Even though this paper is MOOC unrelated, it does provide a 
+detailed insight into the methodology used to analyze (product-) reviews. 
+The textual data preparation, including text normalization, are described in great detail, 
+for instance the description of the \emph{ground truth} technique (sec.\ref{sec:fang}). 
+The models used for the classification were Naive Bayes, SVMs and Random Forest, 
+achieving an average F$_{1}$ score of $0.73$. The author's also pursued to classifying reviews 
+according to their \emph{real} starring, however this effort showed a very low 
+performance \cite{Fang2015}. Overall, this paper was chosen 
+given the detailed description of the polarity classification methodology
+which was adopted for the implementation of the polarity 
+classification (sec.\ref{ch:implementation}).
+
+\chapter{Identification of Disengagement Factors}
+\label{ch:research}
+\vspace{-0.6cm}
+
+\vspace{-0.45cm}
+\section{Thesis Outline and Contribution}
+\label{sec:intro_contribution}
+\vspace{-0.3cm}
+The high importance of measuring student's opinions 
+as a necessary step for a better understanding of the drop-out phenomenon
+was already explained in chapter (ch.\ref{ch:intro}). 
+It is therefore the motivation of this thesis to investigate the drop-out 
+phenomenon from the perspective of the MOOC students. For this purpose 
+the student's opinion is investigated in order to find patterns related
+to their behavior. A large dataset of MOOC reviews was self-collected
+for this thesis from the platform
+Coursetalk.com\footnote{Source: \url{www.coursetalk.com}} for this 
+purpose as dataset was available. 
+
+\vspace{-0.45cm}
+\subsection{Thesis Outline} %\vspace{-0.3cm}
+\label{sec:outline}
+\vspace{-0.3cm}
+
+In order to investigate disengagement factors from the student's 
+perspective, the identification of disengaged students is essential. 
+This is done by analyzing the students completion rate (drop-out) and %due to an observed class imbalance, 
+the reviews polarity, based on the underlying assumption that students
+prone to drop-out reflect their dissatisfaction 
+in their reviews \cite{Adamopoulos2013} (sec.\ref{sec:assumptions}).\footnote{ 
+This assumption is necessary for the project and has been also adopted by earlier studies 
+investigating user motivation with textual data (see \cite{Strapparava2015,Fang2015,Pennebaker2010,Adamopoulos2013}).
+Section (sec.\ref{sec:assumptions}) provides a detailed description of the 
+required underlying assumptions.} To identify student's negative reviews 
+a polarity classification is performed using 
+the approach proposed by Fang \& Zhan (2015) (sec.\ref{sec:fang}). 
+
+The implementation (sec.\ref{ch:implementation}) 
+proceeded as following: First, the review data was extracted 
+with a crawler written for this implementation and 
+then normalized (sec.\ref{sec:dat_extr}, sec.\ref{sec:text_normalization}).
+Emotion sentences \cite{Liu2012} (i.e. text reflecting the student's sentiment)
+were then extracted and annotated with syntactic information 
+using POS tagging (sec.\ref{sec:pos}) in order to identify the 
+sentiment carriers. Next, the polarity classification 
+was performed using two lexicon-based methods. 
+Finally, trending terms were identified using
+class dependent TF-IDF weighting focusing the classes
+drop-out and negative polarity. The
+negative reviews were then analyzed 
+with linguistic metrics in order to 
+find linguistic patterns.
+Additionally, non-linguistic 
+features extracted alongside the textual data were 
+also investigated to find 
+statistical association related 
+to review polarity and completion rate
+(sec.\ref{sec:exploratory}). 
+
+\vspace{-0.5cm}
+\subsection{Contribution}
+\vspace{-0.3cm}
+Overall, this thesis contributes to MOOC research and (educational) data science with:
+\begin{itemize}
+  \item The creation of a crawler in Python for the purpose of collecting 
+ user generated MOOC reviews.
+ \item The collection and cleansing of a large MOOC reviews dataset enabling 
+ the investigation of MOOC students opinions. The data collection and pre-processing 
+ procedures are described in section (sec.\ref{sec:dat_extr}). 
+ \item The revision of the approaches proposed by Adamopoulos (2013)
+ and Fang \& Zhan (2015) (sec.\ref{sec:rel_investigations}).  
+ \item The design and development of an end-to-end automated framework for the identification of 
+ factors related to student disengagement, combining techniques from Text Mining (ch.\ref{ch:implementation}).
+%  and from the collection of raw data to the model analysis
+ \item The identification of factors related with MOOC disengagement using textual review data. 
+ The results will be presented in chapter (ch.\ref{ch:discussion}).
+\end{itemize}
+
+Furthermore, in order to successfully implement this study framework investigating user 
+behavior in a highly subjective environment such as textual assessments 
+(Opinions, def. \ref{def:opinion}), 
+a strict scope limitation so as a set of underlying required assumptions 
+have to be defined. Next section provides an overview of all underlying 
+assumptions adopted for the implementation so as
+the research questions associated with this thesis. 
+
+\vspace{-0.45cm}
+\section{Underlying Assumptions}
+\label{sec:assumptions}
+\vspace{-0.3cm}
+For the successful deployment of this project
+there are some underlying assumptions that this project is based
+upon (see section \ref{ch:intro}). Overall, following assumptions are 
+necessary and core for any investigation 
+related with Opinion Mining and textual data \cite{Liu2012}:
+
+\textbf{Assumption 1}: \emph{Opinion Holders express their true opinion 
+(def. \ref{def:opinion}) and assessment with their reviews.}
+
+Moreover, building on this idea we also have to assume that:\\
+\textbf{Assumption 2}: \emph{Reviews are genuine and not subject to any manipulation e.g. 
+to influence the rating of a certain course or provider.}
+
+The data source of this work relies on the genuineness of reviews in order to 
+properly measure the users state of mind and assessment.
+Furthermore, this thesis is focused on investigating factors related to 
+student disengaged based on drop-out and negative reviews as a 
+reflection of student dissatisfaction. Many investigations presented in 
+chapter (ch.\ref{ch:research}) likewise use this approach. 
+Therefore, for the purpose of this investigation it is assumed that:
+
+\textbf{Assumption 3}: \emph{User disengagement can be measured with drop-out rates.}
+
+Furthermore, if disengagement can be measured with 
+drop-out rates (\emph{Assumption 1}) and it is reflected 
+on the user's review (\emph{Assumption 3}),
+we can conclude per transitivity that:
+
+\textbf{Assumption 4}: \emph{Drop-out rates are reflected on the user's review and
+thus the latter can be used for their measurement}.
+
+\vspace{-0.45cm}
+\section{Research Questions}
+\label{sec:res_questions}
+\vspace{-0.3cm}
+
+After presenting the problem definition (sec.\ref{ch:intro}) and 
+motivation for analyzing textual reviews (sec.\ref{sec:mooc_research}) with text mining 
+techniques (sec.\ref{sec:sa_research}) as well as having defined 
+the underlying assumptions required, we can proceed with the 
+statement of the research questions that will be taken as 
+reference for the implementation.
+
+\textbf{Main question}: \textit{How can we identify disengagement factors using 
+user generated MOOC reviews in order to gain insights into the MOOC drop-out phenomenon
+(def. \ref{sec:intro_term})?}
+
+The main goal of this thesis is to investigate if and how can MOOC 
+reviews be used to identify specific concepts providing insights into (MOOC) 
+drop-out rates (def. \ref{sec:intro_term}). 
+It is the assumption that even though Opinions are highly 
+subjective, as they are expressed naturally by the opinion holder 
+(def. \ref{def:opinion}), they are expected to be less biased than 
+e.g. a targeted survey study \cite{Pennebaker2010} proving to be a 
+good qualitative data source \cite{Mehl2006}. Taking as reference 
+the investigations of Adamopoulos (2013) and Fang \& Zhan (2015) 
+(sec.\ref{sec:rel_investigations}), it was decided to use sentiment 
+analysis and other text mining techniques (sec.\ref{sec:sa_research})
+in order to identify relevant terms providing insights into factors 
+associated with MOOC drop-out. 
+
+In order to pursue the thesis research question,
+the TF-IDF technique (sec.\ref{sec:sa_research}) will be 
+used to identify salient terms in the class corpus and 
+then measure their association with the targeted class i.e. drop-out 
+using the MI association measure. 
+However, due to the observation of a large  
+class imbalance in the data (sec.\ref{sec:status},\ref{sec:limitations}), 
+the concept \emph{disengagement} was expanded from focusing only in drop-out rates
+to focusing into drop-out rates and \emph{student dissatisfaction}.
+Even though there is yet no concrete definition of a 
+standard course dissatisfaction metric (sec.\ref{sec:literature}),
+this concept refers in the scope of this thesis to the reviews polarity
+(i.e if the reviews were positive, neutral or negative).
+Sentiment Analysis allows us to perform the
+polarity classification and identify dissatisfied 
+students based on their negative reviews. However, it is yet to proof
+if:
+
+\textbf{Sub question 1}: \textit{Is there a statistical relation between the 
+drop-out rates and the polarity of MOOC user Opinions?}
+
+This relation has been assumed to be true by several papers 
+\cite{Pang2008,Adamopoulos2013,Fang2015} processing user reviews
+however there is so far known no statistical evidence for this. 
+It is investigated therefore if drop-out rates can be linked
+with student dissatisfaction (based on polarity). 
+The motivation hereby is the ongoing discussion 
+around this topic (sec.\ref{sec:intro_mooc}).
+
+Also, we know from related studies (sec.\ref{sec:literature}) 
+non-linguistic features have been investigated as part of
+research in MOOC drop-out. For instance demographic- \cite{Christensen2013,Ho2013} 
+and click-stream data have been used to investigate social
+interactions and student behavior patterns \cite{Rose2014}. 
+Adamopoulos (2013) (sec.\ref{sec:adamp}) also 
+introduced course related features in addition to textual reviews
+and analyzed its impact on completion rate \cite{Adamopoulos2013}.
+Aside from starring information, non-textual 
+features such as course, student and institution information 
+were extracted with the textual reviews. The following question 
+therefore therefore also arises:
+
+\textbf{Sub question 2}: \textit{What other unknown factors\footnote{Unknown refers to not yet 
+investigated factors.}, if any, are also influencing drop-out rates?}
+
+The next chapters will outline the implementation of this thesis 
+separating it into two slots: 
+first, the data collection to data transformation steps 
+will be described in next chapter. Chapter (ch.\ref{ch:discussion})
+outlines the final result so as a discussion and study evaluation.
+
+\chapter{Implementation}
+\label{ch:implementation}
+\vspace{-0.6cm}
+This chapter provides a detailed description of the implementation of the thesis,
+starting with the data extraction (sec.\ref{sec:dat_extr}) and preparation 
+(sec.\ref{sec:preprocess}) steps. The latter includes the text normalization 
+and POS tagging procedures. Also, two mechanisms for 
+automatic polarity annotation are presented and tested. Finally, the data 
+transformation into the features vector space is described. An exploratory 
+data analysis (sec.\ref{sec:exploratory}) so as a quantitative text analysis 
+(sec.\ref{sec:quant_text}) were performed in order to obtain a better 
+understanding of the data. Figure \ref{fig:1} provides a detailed 
+description of the overall implementation process. 
+The final classification results along with 
+the model evaluation and the identification of disengagement factors will be 
+presented in next chapter (ch.\ref{ch:discussion}).
+
+\vspace{-0.45cm}
+\section{Technical Specifications}
+\label{sec:technical}
+\vspace{-0.3cm}
+
+This project was implemented with Python and R. The project implementation was visualized with a block 
+diagram (fig. \ref{fig:1}) in order to provide a better overview of the project.
+As shown in the diagram, Python was mainly used for the extraction of the data 
+while R was used for the implementation of the project. 
+
+The Python version used was 2.7.10 and the editor \texttt{PyCharm} (Community Edition) \texttt{JRE: 1.8.0\_76-release-b198}.
+while the version used in R was 3.2.2 on a \texttt{x86-64-pc-linux-gnu} (64-bit) platform with the editor \texttt{RStudio 0.99.491}. 
+For the data collection, the Python libraries: [\texttt{Scrapy}]
+\footnote{Lookup at the Scrapy documentation: \url{http://doc.scrapy.org/en/}}
+and [\texttt{BeatifulSoup}] were used. For the implementation of the project, the R packages [\texttt{tm}], 
+[\texttt{openNLP}] and [\texttt{RTextTools}] were mainly used. The source code can be found 
+in: \url{https://github.com/gralgomez/moocs_coursetalk_sa/}}. 
+
+\vspace{-0.5cm}
+\section{Data Extraction}%Coursetalk
+\label{sec:dat_extr}
+\vspace{-0.3cm}
+This section describes the data extraction process of the implementation. 
+First, the data source (\texttt{Coursetalk.com}) will be presented, succeeded 
+by the description of the undertaken data selection process. The complete
+implementation is visualized in a block diagram (fig. \ref{fig:1}).
+
+\vspace{-0.45cm}
+\subsection{Data Source}
+\vspace{-0.3cm}
+
+Coursetalk [\url{www.coursetalk.com}] is a recommendation platform specialized in MOOCs since 2013 
+\cite{Coursetalk2015}. By February 2016 (when the data was extracted) the platform contained 45,540 
+total courses. Coursetalk' users were more homogeneous than expected based on previous research done on
+MOOC users \cite{Ho2013,Ho2015a,Koller2015}. Most users came from OECD countries: 
+US (76.26\%), India (2.67\%), UK (1.96\%), Canada (1.41\%), Israel (1.08\%), 
+Germany (0.9\%), Ireland (0.77\%), Australia (0.74\%) and Spain (0.71\%) 
+among other countries\footnote{
+This figures have been provided by Coursetalk Marketing Department in May 2016. The data was acquired with help of their website analytics.
+Figures missing: Other countries (12.81\%) and Unknown (0.69\%)}.
+Like many other popular recommendation platforms such as \emph{Yelp} or \emph{Amazon}, 
+students can review MOOCs offered by diverse providers such as \emph{edX}, 
+\emph{Coursera}, \emph{Udemy}, etc. 
+
+The data used for this project was self collected as there weren't any datasets available that could be used for this type of 
+analysis. None of the major MOOC platforms\footnote{For example: \emph{edX}, 
+\emph{Coursera}, \emph{Udemy}, etc. Lookup table \ref{t:14} for a provider overview.} (table \ref{t:14})
+has made the data available so far. In order to acquire data, many (independent) researchers 
+have to enroll in the courses to crawl the data for each course e.g. \cite{Adamopoulos2013} ,
+which hinders a large scale quantitative study \cite{Taylor2012}. Coursetalk has been already 
+used in previous studies (see \cite{Adamopoulos2013}) it was then decided to use this source 
+and ask for cooperation. The data used for this project was crawled on February 2016 with a 
+spider written in Python for the purpose of this thesis. 
+
+\vspace{-0.45cm}
+\subsection{Data Selection Process}
+\label{subsec:selection}
+\vspace{-0.3cm}
+An initial dataset of a total 45,538 courses was crawled from the Coursetalk website in February 2016 and
+used as a baseline for the extraction of the student's reviews.
+\vspace{-0.03cm}
+\begin{figure}[!h]
+ \centering
+ \includegraphics[scale=0.44]{./data_sel_v4.png}
+ \caption{Selection process of the course dataset}
+ \label{fig:4}
+\end{figure}
+
+Figure \ref{fig:4} represent the selection process undergone by the course dataset. 
+A total 38412 courses (84.35\%) has zero reviews reviews and thus were disregarded 
+for the review extraction i.e. 7,123 (15.65\%) reviewed courses were kept for further processing. 
+A \emph{language detection} step was performed prior to the 
+review extraction as not all courses or reviews stored at Coursetalk 
+were written in English. This step was necessary as 
+SA is language dependent technique \cite{Liu2012a}. 
+This step was initially performed with the [\texttt{textcat}] R package (\texttt{version 1.0-4}) 
+and later via human revision using RegEx\footnote{Language word frequency lists were used to detect wrongly 
+classified courses and the classification had many false positives}. 
+Most common \emph{false friends}\footnote{
+The term \emph{false friends} refers in this context to two or several words from different language alphabets
+phonetically or orthographically similar (minimal pairs) however different in meaning. 
+In this case, many words of the one language were confused as English due to their orthographic composition.} 
+to English were Afrikaans, Welsh and German. The package also contains very specific language category profiles such 
+as Scottish that was also mistakenly categorized as English. The [\texttt{textcat}] R package uses n-gram categorization, 
+specifically the Cavnar-Trenkle \emph{CT} method\footnote{This method creates an n-gram profile and compares it to a pre-defined (language) category profile matching by the closest distance. The course 
+description was selected as the most suitable variable for the language identification \cite{textcat2016}.}
+\cite{textcat2016} was selected by default. After selecting and crawling the target data, a total of 63,806 review 
+observations were extracted however many double entries were observed and as a 
+result 32,656 unique instances were selected as the baseline of this work. It is important to specify 
+that the extracted data was separated in two different modules, handled differently: 
+on the one hand, a set of non-textual (descriptive) features such as the course-, the institution- and the student's characteristics 
+and on the other hand the textual reviews which represented core element of this analysis. 
+Next section provides a description of the non-textual features 
+while section (sec.\ref{sec:preprocess}) will proceed with the data preparation step.
+\vspace{-0.5cm}
+\section{Non-Textual Features: Exploratory Data Analysis}
+\label{sec:exploratory}
+\vspace{-0.3cm}
+This section provides a descriptive overview of all non-textual
+features extracted with the selected review data.
+The exploratory data analysis intends to gather a better understanding of 
+the target data and its main (statistical) characteristics using mainly 
+descriptive statistics. The target dataset contained a total of 
+32,656 instances of initially 23 variables. All variables extracted are 
+listed in table \ref{t:variables_all} and will be described in detail 
+in this section following the table's order (top-down). 
+We start by describing the variables related to the course, followed by the student characteristics. 
+All linguistic variables (table \ref{t:variables_all}) inferred from the textual reviews 
+will be presented in section \ref{sec:quant_text}.
+
+\vspace{-0.45cm}
+\subsection{Course related Variables}
+\label{sec:variables}
+\vspace{-0.3cm}
+Alongside the textual reviews, the (course) provider, institution, the 
+characteristics (ranking- and country-), the review number per course as well as the 
+course price information were extracted. Table \ref{t:14} provides an 
+overview of all MOOC providers along with the quantity of offered 
+courses and the provider-rating which are summarized in figure \ref{fig:10}. 
+A total of 51 MOOC providers were recorded among them e.g. Udemy being by far the top 
+provider with 79\% of the retrieved courses, followed by edX (7.8\%), Coursera (5.8\%) 
+and Skillshare (3.44\%). 
+
+The university ranking was also collected following the approach of \cite{Adamopoulos2013}\footnote{ 
+As Adamopoulos (2013), the university rank collected from the QS University Ranking (2016).
+Source: \url{http://www.topuniversities.com/subject-rankings/2016}}. Almost 21.5\% of the 
+total (collected) courses were offered by QS ranked universities, 9\% of them were
+top 100 institutions.\footnote{Including in its first ranks world's top universities 
+such as MIT (17.3\%), Harvard (16.7\%) or Standford (12.7\%).}. Along with the institution's 
+ranking information, the country of the ranked institution was collected. 
+Most reviewed courses offered by ranked universities were offered by US institutions
+followed by UK (6.4\%), Australia (\%) and Canada (3.9\%).
+
+\begin{figure}[h!]
+ \centering
+ \includegraphics[scale=0.28]{./coursetalk_prov_inst.png}
+ \caption{Overview of Coursetalk MOOC providers}
+ \label{fig:10}
+\end{figure}
+\vspace{-0.3cm}
+
+Price data was also collected and analyzed for the complete course dataset. Almost 25\% of the reviewed 
+courses were free of cost and around 57.5\% of the rest had an entry cost and 17.4\% were based on a monthly
+fee payment\footnote{This subset is not visible in the graphic though as the course (time)
+duration is unavailable, the real cost involved cannot be measured.}. The price probability distribution 
+of the course with an entry cost is shown in figure \ref{fig:11}.
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.45]{./price_density.png}
+ \caption{Probability distribution of course price data.}
+ \label{fig:11}
+\end{figure}
+\vspace{-0.45cm}
+\subsection[Student related Variables]{Student related Variables}
+\label{sec:status}
+Student related information such as anonymity and completion rate (status) were also extracted.
+The students' anonymity was inferred based from their ID i.e., if user was logged in the 
+platform or not. Figure \ref{fig:15} provides an overview the students' anonymity (left) 
+as well as the students' completion status (right).
+\vspace{-0.4cm}
+\subsubsection*{Student Anonymity}
+\vspace{-0.4cm}
+Unlike expected from MOOCs\footnote{As stated in section (sec.\ref{sec:intro_mooc}), 
+most of students are passive observers \cite{Christensen2013}
+and prone to remain in anonymity \cite{Hayes2015}.} 4,559 students (27.1\%)
+were anonymous in contrast to the large majority of 12,263 unique students (72.9\%) 
+which had an existing profile. Most of users with a profile posted 1 review in 
+average (82.4\%) whereas a small group (0.8\%) posted ($>10$) reviews in average
+suggesting a \emph{super-poster behavior}\footnote{
+The review/user ratio was also not normally distributed. This was tested with a Shapiro normality 
+test (Shapiro test p <2.2e-16).} \cite{Huang2014} as already reported
+by Huang (2014) and Rose (2014) among other authors (sec.\ref{sec:intro_mooc}).
+\vspace{-0.4cm}
+\subsubsection*{Student Status}
+\vspace{-0.4cm}
+The student status describes the student's self declared course completion rate when 
+the review was written. This variable is of special interest as it provides 
+direct information insights into the drop-out rates. The different 
+completion rates reported were: \emph{completed}, \emph{taking now} and \emph{dropped}. 
+The group currently enrolled in the courses (\emph{taking now}) 
+was not included in the analysis as proposed by Adamopoulos (2013).
+As figure \ref{fig:15} indicates, the dataset shows an alarming class imbalance
+between the completed (blue) and dropped-out (red) courses.
+A large majority of students reported to have completed the courses (96.6\%) 
+and only (0.5\%) to have dropped the course. A class imbalance problem is perceived 
+when in the dataset one class is far larger or more frequent than the other(s) 
+as in this case. This plays a major role aspect for the data classification 
+and analysis performed (sec.\ref{sec:eval}).  
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.36]{./anom_compl.jpg}
+ \caption{Overview of anonymity and completion rate variables}
+ \label{fig:15}
+\end{figure}
+
+\vspace{-0.6cm}
+\subsubsection*{Rating Data}
+\vspace{-0.3cm}
+Another variable extracted was the students' rating (i.e. the starring). This variable provides 
+a quantitative assessment measure and can be used as a control
+variable for the subsequent polarity classification (sec.\ref{sec:eval}). 
+The rating information ranged initially from ($0-10$) and was multimodally 
+distributed\footnote{This can be verified visually (fig. \ref{fig:22} 
+and with a Hartigans' dip test for multimodality 
+which proved to be at least bimodal (\emph{non-unimodal}$[p-value < 2.2e^{-16}]$)}.
+The rating was rescaled to a \emph{standard} range of $R_{Std}=(1-5)$ \footnote{
+In this case, this range is considered as standard due to the large number of
+studies that have adopted it e.g. \cite{Fang2015,Hu2006,Liu2004}.} adopted by a large number of 
+studies investigating reviews (sec.\ref{sec:literature}). The motivation for rescaling the rating 
+was to ease the comparison of the final results with the rest of 
+the presented studies (sec \ref{sec:rel_investigations}). Furthermore, the rescaling helped 
+to structurally increase the class differences\footnote{Overall, positive reviews 
+increased from 9,506 (29.6\%) to 24,438 (76.2\%). Negative reviews on the other hand
+increased from 2,574 (8.0\%), to 6504 (20.3\%).]} and thus increasing
+the positive- by (46.6\%) as well as the negative reviews class by (13.9\%). 
+
+The rescaling of the rating was performed with a linear transformation. Given
+two range sets $R_{A}=(0-10)$ and $R_{B}=(1-5)$, so that $f(x): x \in R_{A} \rightarrow x' \in R_{B}$:
+\begin{equation}
+  f(x) = \dfrac{max(R_{B}) - min(R_{B})}{(max(R_{A}) - min(R_{A})) \times (x - min(R_{A})) + min(R_{B})}
+\end{equation}
+Figure \ref{fig:22} shows the different probability distributions of the initial (blue) and the resulting
+rescaled rating (red). The vertical lines represent the respective mean values. 
+From the graphic it can be observed, that the rating is bimodally distributed. 
+A bimodal (multimodal) rating distribution on reviews has 
+been regularly reported \cite{Lackermair2013} (sec.\ref{sec:literature}) as a reviews characteristic.
+An explanation to this phenomenon might be the polarized nature of reviews \cite{Liu2012a},
+as polarized opinions are mostly the user's main motivation to write a review \cite{Pang2002}.
+% \begin{figure}[h]
+%  \centering
+%  \includegraphics[scale=0.46]{../R/review_data/ratings_prob_distr.png}
+%  \caption{Initial and rescaled rating probability distributions}
+%  \label{fig:22}
+% \end{figure}
+%fig:14 and 22
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.3]{./rating.png}
+ \caption[Rating Statistical Characteristics]{Box-plot describing the distribution of status related to rating [Left]. Initial and rescaled rating probability distributions [Right].}
+ \label{fig:22}
+\end{figure}
+
+\vspace{-0.45cm}
+\subsection{Insights from the Data}
+\label{sec:correlation}
+\vspace{-0.3cm}
+The course reviews along with their date were extracted\footnote{Even though the course data was not dated 
+which meant a relevant information loss (sec.\ref{ch:discussion}), the course reviews were dated.} 
+Figure \ref{fig:13} provides a review timeline, showing a review contribution peak in 2013 and a 
+current drawback. This observation can be interpreted as a general student disengagement 
+supporting the theory of Haggard (2013) (sec.\ref{sec:intro_mooc}) 
+stating that MOOCs sudden rise is a result of current \emph{technological hype}. 
+This conclusion however, is not statistically justified. The statistical 
+association between the course and student related variables 
+was investigated. Table \ref{t:corr1} provides an overview of the 
+respective correlation factors and their statistical 
+significance. 
+
+The features \emph{anonymity, status, rating and polarity} were of major 
+interest as they can be used as possible indicators to identify 
+dissatisfied students. As status is a categorical variable, 
+a $\chi^{2}$ independence test was performed to measure any statistical 
+association. A significant statistical dependency between status 
+and rating so as status and polarity was determined\footnote{
+The $\chi^{2}$ results were: 
+$\chi^{2}_{status|rating} = 2773.9, (p < 0.1)$ and 
+$\chi^{2}_{status|polarity} = 578.54, (p < 0.1)$.} (fig. \ref{fig:22})
+. A significant positive correlation between course price 
+and rating was observed (table \ref{t:corr1}). A positive correlation 
+between user profiles and completion rates was found (table \ref{t:corr2}) 
+however also with user profiles (non-anonymous) and negative polarity.
+Unfortunately, it was not possible to measure a statistical relation 
+between user anonymity and probability of writing a review, as only 
+users who provided a review are collected in the dataset. 
+% Experiment 3: Relation between Rating and Polarity?\\
+
+%---------------------------------------------------------------
+%	VARIABLES - DESCRIPTION
+%---------------------------------------------------------------
+%\subsection{Data Variables}
+%---------------------------------------------------------------------------------------
+
+\vspace{-0.45cm}
+\section{Textual Reviews: Data Preparation} 
+\label{sec:preprocess}
+\vspace{-0.3cm}
+Data preparation is one of the key steps of any Machine Learning task 
+and sets the base for any successful statistical analysis \cite{Shapiro1996}. 
+There is however no strict standard procedure but rather a set of techniques 
+that can be adopted according to the classification task in order to avoid
+information loss \cite{Manning1999}. This section describes in detail the 
+data preparation process performed starting with data and 
+text normalization, POS tagging and finally polarity classification.
+
+\vspace{-0.45cm}
+\subsection{Text Normalization}
+\label{sec:text_normalization}
+\vspace{-0.3cm}
+
+Textual data provided in social media is commonly very noisy \cite{Liu2010},
+containing many spelling, grammatical, and punctuation errors among other language phenomena \cite{Liu2012a}. 
+In order to improve the accuracy of text classification, clean data 
+is needed \cite{Liu2012} and thus a fair amount of data pre-processing is therefore 
+need upfront. Despite the introduced spell-checking step, many orthographic and 
+grammatical anomalies can be only discovered and normalized via RegEx.
+In the case of SA, as many steps are based on lexical 
+operations (e.g. DTM, TF/ TP and POS), text normalization plays 
+a major role in improving a models accuracy up to ($10\%-20\%$) \cite{Liu2012}. 
+
+The reviews were cleaned from any double entries and non-English text. From the 
+originally extracted reviews, 
+32,523 unique instances were kept. First, all non-alphanumeric characters and 
+diacritical marks (i.e. accents) were removed using RegEx.
+Also, all apostrophes were resolved e.g. ('ve $\rightarrow$ have, n't $\rightarrow$ not, etc.) so as
+the multiple vowel appearance (e.g. \emph{"veeeery aweeesomeeee"}). A fair amount of slang cleansing was also performed. 
+Abbreviations ([\emph{cuz $\lvert$ coz]} $\rightarrow$ \emph{because}, orthographic alternatives
+([\emph{thx $\lvert$ thks $\lvert$ thanx}] $\rightarrow$ \emph{thanks}) and abbreviations 
+([\emph{Idk $\lvert$ IDK}] $\rightarrow$ \emph{I don't know}) were normalized. 
+Furthermore, the lexical differences between US American and British English 
+were normalized to American English. The motivation for this was the
+large amount (76\%) of US based users (sec.\ref{sec:exploratory}).
+
+In order to avoid information loss, punctuation- so as a case scores were inserted. 
+All punctuation as well as caplocks were also counted. Another phenomenon 
+observed throughout the reviews was a large amount of typos, therefore a spell-checking 
+step was also introduced. Spell-checking has been reported to improve the performance of the classifiers up to 20\% \cite{Fang2015} 
+as it reduces the dimensionality (DTM matrix) which also helps to increase the operational speed.
+This was performed with the R package [\texttt{hunspell}]\footnote{\url{https://cran.r-project.org/web/packages/hunspell/}}.
+
+Negations presence was also scored based on the assumption that a negative polarity is 
+characterized by a large amount of negations \cite{Adamopoulos2013}. This score however does 
+no measure the scope of the negation \cite{Fang2015}. This rather relevant for aspect 
+level SA \cite{Liu2012}. After annotating the respective scores, the text was tokenized and converted 
+to lowercase. All punctuation, special characters and numbers were removed after this step. 
+Finally, all stopwords\footnote{Stopwords refer to very frequent and thus non informative (English) 
+words \cite{Liu2012a}. In this case, a standardized language dependent stopword lists from the R 
+package [\texttt{tm}]} were erased along with sparse terms. Finally, the corpus was 
+stemmed\footnote{The R package [\texttt{SnowballC}] was used hereby.} by removing all 
+word inflections and derivations. The removal of stopwords, sparse terms and stemming of the 
+corpus help to reduce the dimensionality of the dataset. 
+
+\vspace{-0.45cm}
+\subsection{POS Tagging and Emotion Sentences Extraction}
+\label{sec:pos}
+\vspace{-0.3cm}
+
+After normalizing the textual review, the next step was to identify and extract
+text relevant to our analysis. As the purpose of this analysis 
+is to differentiate between negative and positive 
+reviews (polarity classification) in order to find a topical pattern, 
+text expressing personal assessment is targeted i.e. we ruled out facts (def. \ref{sec:sa_theory})
+and focus on subjective Opinions (def. \ref{def:opinion})
+which provide the sentiment information. A very common approach 
+to identify Emotion sentences targets sentences containing at least one
+\emph{emotion word}\footnote{In the literature we find either the concept
+opinion word or opinion phrases, sentiment word and subjective word 
+without any specific context. These terms are also used very loosely.}, 
+i.e. a word reflecting sentiment (the sentiment's polarity is not regarded 
+at this step yet).
+
+According to Pang et al.(2002) and 
+Liu et al.(2007), sentiment is mostly reflected by adjectives (JJ), adverbs (RB) 
+and verbs (VB) \cite{Liu2007,Pang2008} (denominated \emph{sentiment carriers} from now on)\footnote{This term has been introduced within the 
+scope of this thesis.} whereas nouns (NN) on the other hand 
+mostly reflect the topic or the Opinion target (def. \ref{def:opinion}) \cite{Manning1999,Liu2012}.
+Following the approach used by Fang \& Zhan (2015) and Adamopoulos (2013), 
+the Opinion dataset was syntactically annotated with a 
+Part of Speech (POS) tagger in order to identify the \emph{sentiment carriers}. 
+This step was motivated not only by including syntactical information into the analysis
+and find the terms providing most (sentiment) information but also 
+to reduce the dimensionality of the feature space vector (sec.\ref{sec:tdf}). 
+
+\emph{"Awesome course it is fun and a great starting point to 
+web development. If you already know the basics it is a great 
+refreshment. Thanks Rob."}(Completed/10)
+
+Above, an example review is provided from the original dataset in order to better 
+understand the followed approach. The (example) review shown is determined 
+by 26 unique words distributed over 3 sentences. 
+According to this approach, the review is first selected as it contains 
+at least one emotion sentence or an emotion word. 
+In fact, all 3 sentences contain emotion words. From the total 9 (positive) 
+emotion words, almost half are sentiment carriers (in this case all adjectives (JJ), t.\ref{t:16})): 
+\emph{"awesome","fun","great","great"}. Therefore, by only selecting the 
+sentiment carriers and comparing their polarity,
+the overall polarity of the text can be estimated with only 3 unique 
+terms instead of 26.
+
+A POS tagger labels each (previously tokenized) word according to its syntactic function e.g. if the word is an 
+article, noun, adjectives or verb. Table \ref{t:16} provides an overview of the 
+tagset format used within the scope of this thesis which differentiates 36 different POS. 
+A total of 2,500 unique POS-tagged-terms were annotated. Almost half of the POS tagged
+terms were sentiment carriers (i.e. JJ/RB/VB, lookup table \ref{t:16}).
+The identification of the emotion sentences was performed mainly with the 
+R package [\texttt{stringr}] and Liu's Opinion Lexicon (sec.\ref{sec:resources}). 
+The POS tagging step was implemented with a Stanford 
+Maximum Entropy POS Tagger also used\footnote{Adamopoulos (2013) does not provide 
+information on the used POS tagger.} by Fang et.al (2015) (sec.\ref{sec:rel_investigations}).
+The tagger is provided by the [\texttt{openNLP}] and the [\texttt{CoreNLP}] 
+R packages and can be implemented with the function \texttt{Maxent\_POS\_Tag\_Annotator()}.
+The tagger uses the Penn Treebank Project tagset format\footnote{Reference: The Penn Treebank Project
+\url{https://www.cis.upenn.edu/~treebank/}}, described in table \ref{t:16}. 
+
+A total of 1,242 \emph{sentiment carriers} were collected from the
+31,474 emotion sentences and grouped into an Opinion dataset\footnote{Also referred to
+in some papers as \emph{Opinion Lexicon}\cite{Adamopoulos2013,Fang2015} it is not to be confused with
+Liu's Opinion Lexicon \cite{Liu2004}.} which was then then transformed into a feature space vector 
+(DTM sec.\ref{sec:tdf}) and provided to the classifier 
+along with the class polarity tag for training purposes. The data transformation procedure will be
+described next section.
+
+\vspace{-0.45cm}
+\subsection{Quantitative Text Analysis (QTA)}
+\label{sec:quant_text}
+\vspace{-0.3cm}
+To better comprehend the characteristics of the textual reviews, 
+a quantitative text analysis was performed prior to transforming 
+the Opinion dataset (i.e corpus) into a feature space vector (i.e a DTM).
+A quantitative text analysis refers to the measurement of descriptive 
+characteristics of a text, mostly at a lexical level \cite{Pennebaker2010}. 
+
+For instance standard metrics are \emph{word count}, 
+\emph{sentence count} but other metrics such as e.g.
+the number of negative emotion words can be used. Tables \ref{t:variables_all},
+and \ref{t:variables_all} provide an overview of the measured 
+metrics. An average of 3 sentences per review and 
+(39-53) words  per sentence were determined.
+Figure \ref{fig:26} provides a description of the 
+probability distribution of word- (gray) and 
+sentence count (black) together the with positive (blue)
+and negative (red) emotion words ratio. It can be observed from
+the distributions how negative emotion words are less 
+spread i.e. negative emotion words are less used in this dataset
+which can be related either with the (rating and polarity)
+class imbalance observed or with the writing style of the 
+MOOC users.
+% Also, every vector should have the approx. same number of dimensions, 
+% in order to fit the classifiers \cite{Kamber2006}.
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.45]{../R/review_data/ling_metrics.png}
+ \caption[Probability distribution of text metrics]{Comparison of word and sentence count and positive and negative word ratio}
+ \label{fig:26}
+\end{figure}
+Furthermore, from table \ref{t:variables_all} it can be observed that there 
+are some outliers including word- (max=1337) and sentence(max=78) count 
+(i.e model features). These outliers are reflected in the word/sentence ratio and 
+emotion words ratio. The emotion words ratio reflect the ratio of 
+positive or negative emotion words per sentence based on Liu's
+Opinion Lexicon \cite{Liu2004}. Table \ref{t:variables_all} also 
+shows that the mean and the median of negative emotion words are 
+lower than the positive emotion words. Simultaneously
+negative emotion words ratio has far more outliers. 
+
+This is understandable given the subjective nature of polarized opinions.
+Very dissatisfied users will be prone to write longer, negative
+reviews in contrast to very satisfied students. Table \ref{t:corr3} provides 
+a correlation matrix using Pearson's method across all textual metrics 
+including lexical polarity (equation 5.1). A significant correlation
+between longer sentences and negative emotion words ratio was determined.
+The negation ratio on the other hand, refers to the negation count \cite{Pang2002} 
+performed in section (sec.\ref{sec:preprocess}). It is also worth noticing that the 
+POS tagged term set is conformed by 1,176 unique nouns (NN) and 
+1,242 unique sentiment carriers: 643 verbs (VB), 428 adjectives (JJ), 
+and 171 adverbs. 
+
+This quantitative text information is relevant for this implementation
+especially for the data transformation step. When transforming the reviews into the 
+feature vectors. To avoid a DTM with a too high dimensionality 
+(\emph{curse of dimensionality} \cite{Kamber2006}) outliers with very long 
+sentences should be removed prior the data transformation \cite{Pang2002}.
+
+\vspace{-0.45cm}
+\subsection{Data Transformation} %n = 113870 vectors
+\vspace{-0.3cm}
+The data was transformed into a feature space vector using a 
+\emph{DTM}. The DTM technique is the ground for all Text Mining techniques 
+implemented in this thesis (sec.\ref{sec:tdf}), 
+%as it allows to convert strings into a feature vector space 
+providing an overall frequency of every word throughout the reviews 
+and identifies the most salient terms throughout all reviews
+using the TD-IDF weighting (sec.\ref{sec:sa_theory}.
+
+As a result from the quantitative text analysis, reviews with term length
+beyond the median were sorted in order to every to have a feature vector space
+containing the approx. same number of dimensions to fit the classifiers \cite{Fang2015}. 
+Additionally, all sparse terms were sorted out to reduce the matrix' dimensionality 
+and prevent thus overfitting \cite{Manning2008}, this phenomenon is better known as
+the \emph{curse of dimensionality} \cite{Kamber2006}. As a result a (32,068 x 1,242) 
+vector space matrix was created with a total of 1,242 unique sentiment carriers. 
+% The DTM is the base for all Text Mining techniques implemented in this thesis
+% as it provides a 
+All results and the model evaluation, so as insights drawn from the exploratory data analysis
+as well as the quantitative text analysis will be presented next chapter.
+
+\chapter{Results \& Discussion}
+\vspace{-0.6cm}
+\label{ch:discussion}
+This chapter provides the final results of the review polarity classification 
+as well as the identification of factors related to student disengagement.
+First, the classification outcome will be presented alongside it's evaluation. 
+Next, the procedure and final results of the factor identification step will 
+be described in section sec.\ref{sec:disengaged}. The main findings of the 
+implementation will be discussed in section \ref{sec:discussion} and 
+challenges encountered 
+during the implementation will be addressed as well (sec.\ref{sec:drawbacks}).
+Finally, the research questions (sec.\ref{sec:res_questions}) 
+will be revised. The thesis conclusions as well as some ideas for future work 
+are provided next chapter (sec.\ref{ch:conclusions}).
+
+\vspace{-0.45cm}
+\section{Polarity Classification}
+\label{sec:results}
+\vspace{-0.3cm}
+As a result of the class imbalance data problem already described in 
+section \ref{sec:exploratory}, 
+the student dissatisfaction concept and therefore the target data
+has been expanded from collecting reviews of 
+students dropping-out to reviews with a negative polarity. 
+Consequently, a polarity classification 
+has been performed to later carry out with the identification 
+of factors related with student drop-out. 
+Based on Pang et. al (2002) and Fang \& Zhan (2015), 
+two different feature selection methods were tested:
+Opinion Words i.e., sentiment carriers and 
+Term Presence (TP) in Opinion Lexicons.
+The first approach (Opinion Words) showed a very low 
+performance. Three different models\footnote{
+The models were trained with 80\% of the data (25,654)
+and tested with the rest. Subsequently a cross-validation (k=10) 
+was performed.} (SVM, Random Forest (RF), Naive Bayes) were tested
+with a average score of ($F_{1} \approx 0.43$). Consequently, the 
+lexicon-based TP was chosen as it showed a much better performance. 
+% Two lexicon based methods were adopted to 
+% measure the final review sentiment score based on 
+% Term Presence (TP). This section will describe the 
+% implemented polarity classification procedure.
+
+According to Pang et. al (2004) (sec.\ref{sec:rel_investigations}), the review rating 
+is adopted as the \emph{ground truth} \cite{Fang2015}
+as a control measurement and for later evaluation purposes. 
+A manual annotation was not feasible due to the dataset's size. 
+Therefore, a similar approach to Fang \& Zhan (2015) was implemented, 
+using a \emph{Bag of Words} (BoW) model and counting the 
+appearance of positive or negative tokens for every 
+sentence (i.e, pos- and neg emotion word ratio) 
+using Liu's Opinion Lexicon \cite{Liu2012} for this purpose. 
+The overall sentiment score per review has been defined to 
+be equivalent to the average sentiment score of the sentences contained:
+\vspace{-0.3cm}
+\begin{equation}
+SS_{Review}= \frac{\sum\limits_{i=1}^s SS_{Sent}}{s}
+&& \hspace{0.3cm}\text{,}\hspace{0.4cm}  
+SS_{Sent}=-1 \times\sum\limits_{i=1}^n W_{NEG} + \sum\limits_{i=1}^m W_{POS}
+\end{equation}
+
+% The supervised models Naive Bayes and Support Vector Machine (SVM)
+% were implemented using using the R packages [\texttt{sentiment,RTextTools,e1071}]. 
+% Investigating the theoretical details of these models however surpasses the scope of 
+% this thesis, as the focus of the implementation is the 
+% identification of disengagement factors rather than the
+% polarity classification itself. 
+Also a Naive Bayes classifier trained on Wiebel's (MPQA) Subjectivity 
+Lexicon \cite{Wiebe2011}(sec.\ref{sec:resources}) was implemented provided
+by the R package [\texttt{sentiment}].
+Figure \ref{fig:6}) shows the different polarity class ratios according to the
+different classification approaches. The original rating was included in the 
+graphic (light gray) to show the impact of the rating rescaling (sec.\ref{sec:exploratory}). 
+From the graphic it can be observed that the first approach is more sensitive to negative emotion words 
+(7,019 vs. 1,989 predicted negative reviews). 
+A possible explanation for this could be the design of the Opinion Lexicon 
+itself (sec.\ref{sec:resources}), with twice as much negative- as positive emotion words. 
+Moreover, the inclusion of emotion words with common orthographic variations 
+might have lead to an increase in the recognition of negative emotion words. 
+Even though a spell check step was included in the data 
+preparation (sec.\ref{sec:preprocess}), not every mistake can be ruled out.
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.34]{./comp_pol.png}
+ \caption{Comparison of the different polarity classification approaches.}
+ \label{fig:20}
+\end{figure}
+
+\vspace{-0.3cm}
+\subsection*{Classification Evaluation Measures}
+\label{sec:eval}
+\vspace{-0.3cm}
+The evaluation measures used in this work are all based on the $F_{1}$ score 
+(equation 5.3), not only because the reference studies 
+(sec.\ref{sec:rel_investigations}) use this evaluation 
+metric but also due to the observed class imbalance in 
+the dataset (sec.\ref{sec:exploratory}) 
+which the F$_{1}$ score manages to overcome\footnote{
+Because the F$_{1}$ score relies on \emph{Precision} and \emph{Recall} (equation 5.2), 
+the performance is measured relative to the different classifications 
+instead of a total class ratio e.g. unlike Accuracy} using 
+the \emph{Precision} and \emph{Recall} scores\footnote{
+Precision and Recall measurements for multi-class classification for m=3 classes [-1,0,1] \cite{Sokolova2009}.}:
+\begin{equation}
+\begin{align}
+Precision = \frac{\sum\limits_{i=1}^{m} TP_{i}}{\sum\limits_{i=1}^{m}(TP_{i} + FP_{i})}  && \text{, \hspace{0.4cm}} Recall = \frac{\sum\limits_{i=1}^{m} TP_{i}}{\sum\limits_{i=1}^{m}(TP_{i} + FN_{i})}
+\end{align}
+\end{equation}
+The F$_{1}$ is defined as following. $\beta$ refers to the relative 
+importance of \emph{Precision} over \emph{Recall} set to 1, i.e. no difference:
+\begin{equation}
+\begin{align}
+F_{1} = \frac{(1 + \beta^{2}) \times Precision \times Recall}{\beta^{2} Precision + Recall} &&\text{,\hspace{0.2cm}}&&  F_{1} = 2\times\frac{Precision \times Recall}{Precision + Recall}\hspace{0.2cm}\text{($\beta = 1$)}
+\end{align} 
+\end{equation}
+Table \ref{t:eval} so as figure \ref{fig:25} describe the confusion 
+matrix for both classifiers. The first approach showed a score of $F_{1}=0.78$ 
+while the Bayes-based approach $F_{1}=0.86$. This is given due to the 
+its much higher \emph{Precision} (fig. \ref{fig:25}).
+The AUC ROC (Area Under the ROC Curve) is another metric 
+used to measure the performance, and to establish dominance 
+relations between classifiers as it is independent of the decision
+criterion selected and prior probabilities \cite{Chawla2005} 
+The chosen classifiers' AUC ROC however performed rather poorly (fig. \ref{fig:25}). 
+Even if the first approach presented a lower $F_{1}$ score (blue line), 
+its AUC ROC was larger than the Bayes based approach (red line).
+On the other hand side, it has been observed that 
+the \emph{True Negative Rate} (TNR)\footnote{The true negative rate refers to the models 
+specificity and is given by $TNR = \frac{TN}{TN + FP}$, i.e. the rate of the 
+negative polarity correctly classified} of the first approach ($TNR_{1} = 0.78$) 
+exceeded the second approach ($TNR_{2} = 0.74$) which confirms the previously observation 
+that the first model based on Term Presence is more sensitive towards negative emotion 
+words. Both models had approx. the same TPR (Recall) $TPR_{1} = 0.796$ so 
+as $TPR_{2} = 0.795$.
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.4]{./roc_metrics.png}
+ \caption{ROC curve for complete dataset}
+ \label{fig:25}
+\end{figure}
+% highly imbalanced dataset and the 
+It is possible that the low performance of the ROC curve is related 
+to the distribution difference of the \emph{ground truth}. 
+Even though the rating was rescaled increasing the negative polarity 
+class in size, so did the positive class.
+A low AUC ROC curve in combination with a high F$_{1}$ reflects 
+rather than poor performance, a poor model scalability \cite{Taylor2012} 
+and when used to compare classifiers, it reflects how well
+the classifiers can differentiate the classes. 
+It was decided to classify the reviews polarity based on 
+the Opinion Lexicon due to the higher  
+ratio shown which is the target class of this project.
+% \vspace{-0.45cm}
+\section{Disengagement Factors Identification}
+\label{sec:disengaged}
+\vspace{-0.3cm}
+The main purpose of this thesis is to identify factors 
+associated with the drop-out phenomenon (sec.\ref{sec:literature}). 
+As a result of the class imbalance observed in the
+dataset (sec.\ref{sec:exploratory}), 
+student dissatisfaction was redefined 
+based on the completion rate (i.e. reviews of students who had 
+dropped-out from the courses), and (negative) review polarity. 
+In order to identify negative reviews from the dataset, 
+a polarity classification was performed (sec.\ref{sec:eval})
+collecting a total of 7,019 negative and 167 drop-out reviews. 
+This section describes the factor identification process
+followed by the presentation of the results obtained.
+
+Similarly to the previous approach (sec.\ref{sec:pos}) which selected features
+based on its syntactic functionality (i.e opinion words/sentiment carriers) (sec.\ref{sec:pos}),
+nouns have been chosen for the identification step. 
+A noun does not carry any sentiment \cite{Pang2008,Liu2012} 
+but instead, it does provide information around 
+the opinion target \cite{Pang2002}.
+A similar approach is used in Aspect level Sentiment Analysis in order 
+to detect the opinion's aspect \cite{Liu2012} collecting a total of 
+. 
+The nouns TF-IDF scores (sec.\ref{sec:tdf}) 
+were ranked in order to obtain the most class-descriptive \emph{terms}. 
+% The TF-IDF score (sec.\ref{sec:intro_sa}) reflects the salience of terms within the selected reviews.
+
+\vspace{-0.45cm}
+\subsection*{Results}
+\vspace{-0.45cm}
+Table \ref{t:factors} provides an overview of the 30 most 
+class-descriptive terms according to the ranked TF-IDF score. 
+The ranked TF-IDF entries were already pruned in order to 
+sort out common class-descriptive words e.g. \emph{course}.
+
+Many class descriptive terms do match with the observations 
+made by Adamopoulos (2013) e.g. topics related to 
+professor (\emph{instructor, professor, prof}), 
+class materials (\emph{materials, videos, information, content, topic}), 
+and assignments (\emph{assignments}) but also 
+time related terms were observed such as (\emph{weeks, time, hours}). 
+The term \emph{problems} also showed a high salience in both classes.
+Even though many terms are relevant in both classes and even 
+with the approx. same ranking e.g. \emph{experience}, 
+most of terms ranking is class dependent. Among the drop-out class
+specific terms the word \emph{drop} and \emph{end} can be found
+suggesting that students provide explanations on why they dropped 
+in their reviews. Another interesting topic emerging in the 
+drop-out class are the terms \emph{language, english} 
+however these topics have an overall high frequency. 
+\vspace{-0.3cm}
+\subsection*{TF-IDF Clustering}
+\vspace{-0.45cm}
+In an effort to further investigate the class-descriptive terms,
+the inter-class TF-IDF scores were clustered\footnote{ 
+They were clustered by computing the Euclidean distance.
+The Euclidean distance is a common measure to
+cluster matrices. It is defined by the 
+distance between the two vectors
+$d(x,y)=\sqrt{(x_{1}-y_{1})^{2}+\cdots+(x_{n}-y_{n})^{2}}$.}
+(fig. \ref{fig:18}. Several clusters were identified, some of them inferring
+semantic relations e.g. (\emph{materials, courses, video}) or 
+(\emph{instructor, questions}). However, given the fact that no 
+semantic information was included in this analysis, it is 
+difficult to establish any causal explanation 
+as how exactly these terms are related to each other. 
+For instance the terms \emph{instructor} and \emph{questions} were associated 
+inferring a possible relation so that this could be interpreted as 
+dissatisfied students expecting the instructor to answer 
+their questions however with no statistical evidence. 
+Therefore the inclusion of semantic information in a 
+future effort is highly recommended.
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.45]{./cluter_1.png}
+\caption{Descriptive terms clustered according to their TF-IDF. }
+ \label{fig:18}
+\end{figure}
+
+\vspace{-0.45cm}
+\section{Summary \& Discussion}
+\label{sec:discussion}
+\vspace{-0.3cm}
+
+One of the main purposes of this thesis is to investigate a methodology capable of 
+identifying factors related to drop-out behavior (sec.\ref{sec:literature}). 
+For this purpose, an approach related to Adamopoulos' (2013) and Fang \& Zhan (2015)
+has been adopted which investigates the MOOC drop-out phenomenon from the students' 
+perspective by analyzing course characteristics and students' reviews. Course starring 
+data (i.e rating) provides limited assessment information \cite{Hayes2015,Conole2013}
+and therefore the study of textual reviews is an appealing method 
+for gaining insights into students drop-out behavior (sec.\ref{sec:intro_mooc}). 
+For this implementation, a dataset was collected 
+and normalized (sec.\ref{sec:dat_extr}). A scalable end-to-end framework 
+has been provided, enabling a future replication and scaling of this study. 
+
+\vspace{-0.4cm}
+\subsection*{Non-Textual Variables}
+\vspace{-0.4cm}
+An insight gained from the descriptive analysis was the data 
+homogeneity (which could explain the observed class imbalance). 
+The majority of students were found to come from the
+US (92\%) which simultaneously infers that the dataset extracted cannot be considered as
+representative for the global (MOOC-) market. Furthermore, 
+among the MOOC providers, 51.1\% of all courses were provided 
+by the platform Udemy (sec.\ref{sec:exploratory}). 
+Many features were also found to be highly skewed or bimodally distributed 
+such as the case of course price (fig. \ref{fig:11}) and rating.
+
+More importantly, an alarming class imbalance was determined
+in the student status variable (fig. \ref{fig:22}), consisting of 96.6\% \emph{completed},
+3\% \emph{taking now} and 0.5\% \emph{dropped}. 
+A large amount of registered users (i.e \emph{not-anonymous})
+was observed, however this is understandable in consideration of 
+the dataset's apparent selection bias. 
+Another observation was the reduction of reviews 
+from 2013 on, which supports Christensen et. al (2013) 
+theory explaining the sudden rise of MOOCs as a technological hype 
+(sec.\ref{sec:intro_mooc}), however this has no statistical evidence.
+\vspace{-0.4cm}
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.33]{../R/review_data/reviews_count_year.png}
+\caption[Timeline of Coursetalk according to reviews]{\small \centering Histogram of reviews distributed according to the year (2010 - 2016)}
+ \label{fig:13}
+\end{figure}
+
+Among the non-textual features, following statistical 
+dependencies were identified:
+\begin{itemize}
+%price - review num
+ \item A slight negative correlation (-0.036**) between course price and 
+ review numbers was determined. 
+%  The results of Koller (2013) \cite{Koller2013} which suggest an entry cost incentive to 
+%  avoid drop-out. Thus the question arises if \emph{price} can be used as a 
+%  possible incentive to engage students. An exact threshold could not be measured 
+%  however this could be pursued in future studies.
+%price - provider/unirank
+ \item A positive correlation between provider and price was 
+observed. University ranking and price had also a significant inverse correlation 
+(-0.432**, t.\ref{t:corr1}) which can be interpreted as higher 
+(lower number) ranked universities offering more expensive MOOCs.
+%rating - price
+ \item A positive correlation (0.278**) was identified between
+ course rating and course price.
+%rating - polarity
+\item A significant statistical dependency was determined between 
+registered users and polarity.
+\item More importantly, a significant statistical dependency could be determined
+between rating, status ($\chi^{2}=2773.9$) and polarity ($\chi^{2}=578.54$) 
+which serves as foundation for this implementation as it confirms
+the adopted assumptions (sec.\ref{sec:assumptions}).
+\end{itemize}
+\vspace{-0.45cm}
+\subsection*{Textual Variables}
+\vspace{-0.3cm}
+As a result of the observed class imbalance prevailing in the student status, 
+a polarity classification step was introduced in order to identify 
+negative reviews and use them in addition to the 
+drop-out reviews (i.e reviews of students claiming to have dropped-out).
+Fang \& Zhan's 2015) approach was adopted, using lexicon-based methods for 
+automated labeling. Both classifiers showed an average score of $F_{1} = 79.5$. 
+Quantitative text metrics were implemented in order to establish
+language patterns related with negative reviews to best fit the classifiers
+by sorting out outliers e.g. very long reviews with word count larger 
+than the median (fig.\ref{fig:26}). 
+
+Following findings were estimated:
+\begin{itemize}
+\item When comparing the performance of the lexicon-based classification
+with the ground-truth (i.e the rating) used by Pang et al. (2002)
+and Fang \& Zhan (2015), the question arises if starring is 
+an appropriate control measurement for automatic review labeling. 
+When comparing the class ratios based on the reviews emotions ratio, 
+it can be perceived that (starring) rating tends to be more positive 
+than the overall textual sentiment (fig.\ref{fig:20}) \footnote{
+A paired t-test was conducted to proof this statement confirming (95\%)
+that the difference between means was not equal to 0.
+(t = 0.017893, df = 2, p-value = 0.9873)}. 
+Fang \& Zhan (2015) undertook a related effort to reverse classify 
+reviews to the corresponding starring, however with very low 
+performance \cite{Fang2015}.
+ \item A significant but moderate negative correlation\footnote{
+ This was measured with word count (-0.065**) and word per sentence (-0.056**)} 
+ between longer sentences (i.e sentence length larger than average) and  
+ negative emotion word ratio was determined. This advocates for dissatisfied students
+ prone to writing longer reviews than satisfied ones.
+ \item Likewise a significant positive correlation 
+ between emotion words and punctuation marks ratio (!?\$) so 
+ as capslock ratio (i.e sentences written in capslock) was determined.
+ Negative emotion words ratio showed a stronger correlation 
+ (punct = 0.549**, case = 0.165**) than the positive ones 
+ (punct = 0.512**, case = 0.145**).
+\end{itemize}
+
+The TF-IDF score was employed to identify salient 
+terms in the target classes (drop-out and negative reviews).
+The TF-IDF (sec.\ref{sec:tdf} reflects how salient a term is 
+within a class. Similar results to Adamopoulos'(2013) study 
+were achieved even if the study design was not the 
+same (sec.\ref{sec:assumptions}, 
+\ref{sec:adamp}). Overall it was determined:
+
+\begin{itemize}
+\item Terms related to \emph{Time, Class Materials, Instructor, 
+Assignments and Difficulty}\cite{Adamopoulos2013} were observed
+to be more salient\footnote{More salient refers to a higher ranked TF-IDF.} 
+in the drop-out so as the negative reviews classes. These results support 
+the findings of Adamopoulos' (2013) study even though 
+the extracted factors were extracted based on observations whereas
+however these results were determined based on automated 
+Text Mining techniques which allow a replication.
+
+\item Other terms such as \emph{Language, Beginners}
+and \emph{Fun} were observed to be relevant across all reviews, suggesting
+to be general relevant topics of interest.
+\item Terms such as \emph{drop, end} were highly ranked in the drop-out class.
+\end{itemize}
+ 
+\vspace{-0.45cm}
+\section{Research Questions Revision} %% 2. answer research questions
+\vspace{-0.3cm}
+\textbf{Sub question 1}: \textit{Is there a statistical relation between the 
+drop-out rates and the polarity of MOOC user Opinions?}
+
+The implementation of this effort was made based on several underlying 
+assumptions presented in section \ref{sec:assumptions}.
+A significant statistical dependency between rating and 
+completion rate was determined (fig. \ref{fig:22}) which 
+supports the underlying assumption(s)
+stated in reviewed studies e.g. \cite{Adamopoulos2013,Coursetalk2015} and also
+adopted for this thesis (sec.\ref{sec:assumptions}). 
+Users reflect their opinion and assessment with their reviews
+and dissatisfied students provide a significant lower rating than 
+satisfied students. However, rating was observed to be skewed and 
+binomially distributed making it questionable if it can be used 
+as the ground truth.
+
+Starring is commonly used as a ground truth as an alternative to 
+manual labeling specially in larger datasets. Even though starring did
+correlated with the reviews polarity the rating distribution 
+is also very skewed and multimodally distributed. This finding is 
+consistent with previous studies. Therefore the question arises if
+starring should be considered an objective \emph{ground truth}. 
+Fang \& Zhan's attempt of inferring the starring from the 
+review's sentiment showed very low performance. 
+
+\textbf{Sub question 2}: \textit{What other unknown factors\footnote{Unknown refers to not yet 
+investigated factors.}, if any, are also influencing drop-out rates?}
+
+Along with the textual reviews, other features (course-, student and institutions related
+features were also extracted and analyzed. A positive correlation between dropped 
+status and user anonymity (0.16**) was determined (tab.\ref{t:corr2}).
+Among the frequent topics associated with negative polarity the terms:
+\emph{Language, English, Time} that can be further investigated in a future.
+
+\textbf{Main question}: \textit{How can we identify disengagement factors using 
+user generated MOOC reviews in order to gain insights into the MOOC drop-out phenomenon
+(def. \ref{sec:intro_term})?}
+
+The chosen approach adopted from Adamopoulos (2013) and Fang \& Zhan
+was successful despite the data limitations observed throughout the study.
+However a better taxonomy is needed to define the concepts disengaged or
+dissatisfied students as already exposed in (sec.\ref{sec:literature}).
+Overall, using the current accessible Text Mining tool available and the 
+algorithms proposed real life data can be processed and used to the 
+benefit of e.g. education by investigating student's opinions regardless the 
+limitations that are bound with text processing.
+\vspace{-0.45cm}
+\section*{Model Drawbacks} % Limitations with  regard to the Literature
+\label{sec:drawbacks}
+\vspace{-0.3cm}
+The presented framework includes several drawbacks and is bounded to 
+limitations that will should be addressed. During the data pre-preparation
+process many errors were dragged into the analysis e.g. 
+tokenization, stemming, spelling errors or POS tagging errors.
+Furthermore, despite the great advantage of TF-IDF's
+easy computation, this score also presents limitations.
+Based on the BoW model (sec.\ref{sec:tdf}), this approach only analyzes
+the text at a lexical level i.e., 
+the position of the terms in text is not analyzed, nor its 
+syntactic function i.e., part of speech (POS) or any semantic 
+information. Furthermore, as there is no semantic analysis involved,
+phenomena such as polysemy or synonymy can not be handled e.g. 
+recognize that the terms \emph{Professor, Instructor} 
+means the same. 
+
+A further drawback of this analysis are the textual processing
+limitations this study is bounded to e.g. the processing of 
+\emph{implicit negative comments}\cite{Fang2015}.
+Implicit negative comments refer to negative reviews including 
+no negative words which are not recognized as they are not 
+included in the respective Opinion Lexicon. 
+Following examples of implicit negative reviews were found in the dataset:
+\emph{a little light on content.}, \emph{You Sir are a king!}. 
+Neither the words \emph{light} or \emph{king} are included in any
+Opinion Lexicon\footnote{
+For this example not only the Opinion Lexicon but all presented lexical resources (see section \ref{sec:resources}) were tested.}. 
+This is one example shows, how cluster based dictionaries or semantic annotation 
+could improve the model. Also, as already mentioned in section \ref{sec:text_normalization}, 
+the negation scope could also not be measured.
+%\vspace{-0.45cm}
+
+\subsection*{Data Limitations} % 4.2 limitations
+\label{sec:limitations}
+\vspace{-0.3cm}
+There are some data limitations that should be taken into account when analyzing
+the drawbacks to which this study is bounded. These limitations are worth mentioning 
+in hope they can be taken into consideration for future work:
+
+First of all, there is a strong selection bias present in the extracted data (ch.\ref{ch:intro}).
+Students writing reviews are not representative of standard MOOC participants, 
+which on the one hand are not only participating mostly passively (\emph{Auditors}) 
+\cite{Kizilcec2013,Wen2014} but also have the highest hazard of dropping out 
+the course \cite{Koller2013}. In this case, reviews were collected from a 
+\emph{specialized, external} platform which increases the risk of a selection bias. 
+The selection bias of the data was already addressed in Coursetalk' latest 
+report \cite{Coursetalk2015} where a self-reported completion rate of 92\% was stated.
+The selection bias was also observed based on anonymity- (5.6\%) and 
+the drop-out rate (0.5\%) information extracted with dataset (sec.\ref{sec:variables}).
+The data however is useful and representative to highly engaged users.
+These type of users are often used in qualitative research in order to gather insights, 
+known as \emph{extreme users}. 
+
+Another limitation shown by the data was that no demographic data available 
+that can be linked to the reviews thus limiting the scope of analysis. 
+Even if the user country rates are available (sec.\ref{sec:exploratory}), 
+they cannot be linked 1:1 with drop-out rates in Coursetalk.
+Also, the course type is not provided. %The dataset had to be enhanced by a simple categorization. 
+Coursetalk inserted in June 2016 (after the data collection) a recommendation engine based on 
+the (registered) user which included a course type taxonomy however, the course type information  
+is not provided at the course profile from where the data was crawled. 
+Missing course type data represents a great disadvantage. 
+An effort was undertaken for this thesis to cluster the courses description
+into topical groups to infer e.g. \emph{course types} with a low performance though.
+Nevertheless, even when enhancing the data with this information, the type classification is 
+highly subjective and annotator specific as not labeling 
+guideline is provided. Another consideration is if courses should be classified with 
+an multi-class multi-label approach rather than multi-class however this idea can be further 
+developed in future work. There were no guidelines in the website according 
+to which aspects the courses were classified. 
+
+% This analysis also did not involved the measurement of the \emph{reviews helpfulness (peer reviewing)} feature which
+% is was also available after the data collection. Review helpfulness or peer reviewing 
+% can be used a weighting measure in order to enhance future analysis results. 
+% Finally, the extracted data (user reviews) is provided in the platform 
+% allocated per course. Courses are treated as sole instances without 
+% differentiating between the term or year when the course occurred e.g. 
+% the course \emph{Introduction to Python} of Summer 2013 is merged with 
+% the same course of Fall 2015 thus making impossible a more detailed 
+% chronological analysis on the course evolution.
+% - LEXICAL MODEL - \subsubsection*{Limitations of Lexical Model}
+% Limitations: Irony/Sarcasm | metaphoric language | not possible
+% Confuse context-dependent words "mad about" "beeing mad"
+% true that lexical models are limited however it all comes about the study design and scope
+%Unmeasured features:
+% \vspace{-0.45cm}
+% \subsection{Repercussion in other areas}
+% \vspace{-0.3cm}
+% How to apply this results to the overall MOOC discussion? 
+% According to Coursetalk data, there is a falling tendency on user engagement the couple past years (see \ref{fig:13}).
+% MOOC design 
+% Any attrition study should make use of textual data (reviews) in order to measure concrete attrition cause factors instead of 
+% \emph{only} prediction the attrition probability.
+
+\chapter{Conclusions \& Ideas for Future Work}
+\label{ch:conclusions}
+\vspace{-0.6cm}
+This thesis has implemented a scalable automated framework to identify terms associated with drop-out 
+as well as to investigate MOOC reviews at a lexical level. A dataset of 
+63,806 reviews alongside course-, institution and student features 
+was collected and prepared for the purpose of this thesis (sec.\ref{sec:preprocess}). 
+
+A large class imbalance was observed during the implementation and thus 
+Sentiment Analysis was applied to expand the target data by differentiating 
+positive from negative reviews to investigate the latter. 
+For the polarity classification, lexicon-based approaches showed a better performance 
+and thus were selected. Two lexicon-based methods were used, reporting F$_{1}$ scores of 0.73 
+and 0.86 respectively. The F$_{1}$ scores are comparable to the performance 
+reported by Fang \& Zhan (2015)
+\cite{Fang2015} and a significant difference between starring ratings and textual reviews
+could be determined. 
+
+For the identification of salient terms, the TF-IDF method 
+was applied among reviews of drop-out students and negative polarity. 
+The findings of this study partly concur with Adamopoulos' work even though 
+the methodology or the approach were not the same (sec.\ref{sec:assumptions},\ref{sec:adamp}). 
+Moreover, by using an automated text processing approach,
+this implementation identified the same thematic clusters that 
+Adamopoulos collected manually. Terms related to \emph{Time, Class Materials, Instructor, 
+Assignments, Difficulty} were found to be more predominant in the drop-out 
+and negative review classes. Other terms such as \emph{Language} and \emph{Beginners}
+as well as \emph{Fun} were observed to be relevant across all 
+reviews suggesting them to be topics of interest. 
+The measurement of the actual impact on completion rates 
+surpassed the scope of this thesis and can be pursued in a future study. 
+This automated approach allows for the replication and further 
+development of techniques investigating students' opinions. 
+
+Overall we can conclude that user reviews can be used in order 
+to investigate the users' opinions particularly in the context of MOOCs
+were qualitative data is lacking \cite{Christensen2013}.
+The usage of Sentiment Analysis and Text Mining technique
+offer a toolset that well implemented, represent a great 
+alternative to surveys and quantitative studies, 
+allowing to quantify qualitative studies.
+The proposed framework can be implemented also in other fields. 
+With the growth of recommendation platforms 
+e.g Amazon, Rotten Tomatoes and forums,
+it is also an inexpensive way of performing user research.
+
+
+A future study on how students use MOOCs is necessary 
+in order to gain further qualitative insights in this research area. 
+
+\vspace{-0.45cm}
+\section*{Ideas for Future Work}
+\vspace{-0.3cm}
+Due to the limited scope of this work, many aspects had to be left out and can be 
+pursued in future work. The course type annotation could not be pursued within this 
+work however it is of great relevance as it provides a more detailed information about 
+drop-out behavior. It would also provide new insights that can be used to 
+improve the MOOCs design. A topic modeling algorithm e.g.  Latent Dirichlet 
+Allocation (LDA) can be used in order to cluster yet unknown topical 
+course characteristics.
+
+The inclusion of semantic information could improve the analysis by far
+e.g. if the system recognizes synonyms such as the \emph{instructor}
+and \emph{professor}. Also, it was observed that many reviewers 
+explained the reasons to either drop the course or dislike it 
+in a \emph{(if,then)} manner. By investigating this functional 
+phrases, more detailed insights can be derived
+specifying the students' concrete expectations.
+
+The investigation of external course engagement 
+factors is encouraged for future work.
+Factors such as Internet connectivity, digital 
+literacy and English language skills should be taken into account 
+since they might have an influence on the 
+MOOC success and student engagement or even 
+represent a completion limitation. 
+Terms related to \emph{Language} were observed
+to be relevant among the investigated drop-out 
+reviews class.
+
+\newpage
+\bibliographystyle{apa}
+\bibliography{main_thesis}
+\newpage
+
+\appendix
+\chapter*{Appendix}
+\vspace{-0.6cm}
+\label{ch:appendix}
+\addcontentsline{toc}{chapter}{Appendices}
+
+\renewcommand{\thesection}{\Alph{section}}
+\renewcommand\thefigure{\thesection.\arabic{figure}}
+
+\setcounter{figure}{0}  
+%-------------------------------------------------------------------------------------------------------------------
+% \section[Descriptive Analysis]{Descriptive Analysis - Graphics}
+%-------------------------------------------------------------------------------------------------------------------
+%\section{Figures}
+%\section{Tables}
+% \begin{table}[h]
+% \centering
+% \begin{tabular}{lllll}
+% \toprule
+%    & Country     & No.of courses 		& Average ranking & \% \\ \toprule
+% 1  & US          & 506                        & 58.4            & 63.2 \\
+% 2  & UK          & 51                         & 121.4           & 6.4  \\
+% 3  & Australia   & 47                         & 133.5           & 5.9  \\
+% 4  & Canada      & 31                         & 35.4            & 3.9  \\
+% 5  & Netherlands & 31                         & 67.0            & 3.9  \\
+% 6  & Hong Kong   & 21                         & 95.7            & 2.6  \\
+% 7  & Switzerland & 21                         & 54.5            & 2.6  \\
+% 8  & China       & 20                         & 82.2            & 2.5  \\
+% 9  & Spain       & 12                         & 662.4           & 1.5  \\
+% 10 & Sweden      & 9                          & 93.7            & 1.1  \\
+% 11 & Belgium     & 8                          & 117.5           & 1.0  \\
+% 12 & Japan       & 8                          & 59.9            & 1.0  \\
+% 13 & Germany     & 6                          & 50.5            & 0.7  \\
+% 14 & India       & 5                          & 392.4           & 0.6  \\
+% 15 & Denmark     & 4                          & 174.8           & 0.5  \\
+% 16 & Ireland     & 4                          & 160.0           & 0.5  \\
+% 17 & Singapore   & 4                          & 40.5            & 0.5  \\
+% 18 & South Korea & 4                          & 100.8           & 0.5  \\
+% 19 & Israel      & 2                          & 225.0           & 0.2  \\
+% 20 & Italy       & 2                          & 225.0           & 0.2  \\
+% 21 & Lebanon     & 2                          & 550.0           & 0.2  \\
+% 22 & Mexico      & 1                          & 550.0           & 0.1  \\
+% 23 & Norway      & 1                          & 135.0           & 0.1  \\
+% 24 & Taiwan      & 1                          & 167.0           & 0.1  \\ \bottomrule
+% \end{tabular}
+% \caption{Countries with ranked universities in Coursetalk}
+% \label{t:countries_rank}
+% \end{table}
+% \begin{figure}[h]
+%  \centering
+%  \includegraphics[scale=0.75]{./course_variables_correlation.png}
+%  \caption{Correlation Matrix of all extracted course features}
+%  \label{fig:16}
+% \end{figure}
+% \section{Statistical Dependencies}}
+
+\begin{table}[h]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lllll}
+\toprule
+			 & course\_rating           & university\_rank & review\_num & course\_price \\ \toprule
+course\_rating           & 1                        & -0.039**            & 0.006         & 0.278**  \\
+university\_rank 	 & -0.039**                 & 1                   & 0.002         & -0.432** \\
+review\_num      	 & 0.006                    & 0.002               & 1             & -0.036** \\
+course\_price            & 0.278**                  & -0.432**            & -0.036**      & 1       \\ \bottomrule
+\end{tabular}%
+}
+\caption[Correlation table of course related non-textual features]{\small \centering Correlation table of course related non-textual features.p $<$ 0.01**, p $<$ 0.05*}
+\label{t:corr1}
+\end{table}
+\begin{table}[h]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccccccc}
+\toprule
+	  & profile & stat.drp & stat.tkn & stat.cpm &  pol.pos  & pol.neutr & pol.neg \\ \toprule
+profile   & 1.00     & -0.040** & -0.091** & 0.099**  & -0.212** & -0.020** & 0.218**  \\
+stat.drp  & -0.040** & 1.00     & -0.012*  & -0.385** & -0.031** & 0.101**  & 0.01     \\
+stat.tkn  & -0.091** & -0.012*  & 1.00     & -0.918** & 0.055**  & 0.058**  & -0.069** \\
+stat.cpm  & 0.099**  & -0.385** & -0.918** & 1.00     & -0.039** & -0.093** & 0.060**  \\
+pol.pos   & -0.197** & -0.051** & 0.040**  & -0.016** & 0.977**  & -0.342** & -0.902** \\
+pol.neutr & -0.020** & 0.101**  & 0.058**  & -0.093** & -0.132** & 1.00     & -0.096** \\
+pol.neg   & 0.218**  & 0.01     & -0.069** & 0.060**  & -0.974** & -0.096** & 1.00    \\ \bottomrule
+\end{tabular}%
+}
+\caption[Correlation table of variables status, polarity and anonymity]{\small \centering Correlation table of variables status, polarity and anonymity .p $<$ 0.01**, p $<$ 0.05*}
+\label{t:corr2}
+\end{table}
+\begin{table}[h]
+\centering
+%\resizebox{\textwidth}{!}{%
+\begin{tabular}{m{5cm}m{3cm}m{3cm}}
+\toprule
+                          & C$_{1}$ Op.Lex  & C$_{2}$ Subj.Lex \\ \toprule
+True Positives (TP)       & 14007              & 16745                 \\
+False Negatives (FN)     & 3613               & 4278                  \\
+False Positives (FP)      & 3877               & 1139                  \\
+True Negatives (TN)       & 1063               & 398                   \\
+Precision                 & 0.783              & 0.936                 \\
+Recall (TPR)              & 0.796              & 0.795                 \\
+F$_{1}$                        & 0.78               & 0.86                  \\
+True Negatives Rate (TNR) & 0.784              & 0.741                 \\ \bottomrule
+\end{tabular}%
+%}
+\caption[Confusion matrix for the polarity classification]{\small \centering Confusion matrix for the polarity classification}
+\label{t:eval}
+\end{table}
+
+% \begin{table}[h]
+% \centering
+% \resizebox{\textwidth}{!}{%
+% \begin{tabular}{m{7cm}m{1.7cm}m{1.7cm}m{1.7cm}m{1.7cm}}
+%  \toprule \\
+% Text Quantitative Metric                  & min & max    & mean & median \\ \toprule
+% Total Word Count (WC)        & 0.0 & 1337.0 & 52.6 & 39.0   \\
+% Total Sentence Count (SC)    & 0.0 & 78.0   & 3.6  & 3.0    \\
+% Word/Sentence Ratio          & 0.0 & 633.0  & 14.5 & 13.3   \\
+% Emotion words                & 0.0 & 224.0  & 8.9  & 7.0    \\
+% Emotion words Ratio          & 0.0 & 3.0    & 0.2  & 0.2    \\
+%   Positive emotion words       & 0.0 & 89.0   & 5.2  & 4.0    \\
+%   Positive emotion words ratio & 0.0 & 3.0    & 0.1  & 0.1    \\
+%   Negative emotion words       & 0.0 & 135.0  & 3.7  & 2.0    \\
+%   Negative emotion words ratio & 0.0 & 2.0    & 0.1  & 0.1    \\
+% Negation Count               & 0.0 & 27.0   & 0.9  & 0.0    \\
+% Negation/Sentence Ratio      & 0.0 & 20.0   & 0.2  & 0.4    \\
+% Punctuation Count            & 0.0 & 974.0  & 35.3 & 26.0   \\
+% Punctuation/Sentence Ratio   &     &        &      &        \\
+% Caplocks Count               & 0.0 & 60.0   & 1.2  & 1.0    \\  \bottomrule
+% \end{tabular}%
+% }
+% \caption{\small Example of some text metrics used for the quantitative text analysis}
+% \label{t:variables_all}
+% \end{table}
+\begin{table}[h!]
+\centering
+\resizebox{\textwidth}{!}{
+\begin{tabular}{m{3cm}m{1cm}m{4cm}m{8cm}m{3cm}m{3cm}}
+\toprule
+Author            & Year & Title                                                                                                       & Description                                                                                                                                                                                                                                                                                                                                                 & (SS) Method                                                                             & Classifier                                                                                                                            \\ \toprule
+Adamopoulos       & 2015 & What makes a great MOOC? An interdisciplinary analysis of student retention in online courses               & Identification of MOOC retention determinants. Study combines econometric analysis, text mining and predictive modeling. Analysis of the reviews and scoring them with sentiment analysis mechanism. Salient concepts were later used as independent variables in a regression.                                                                             & Similar to Hu and Liu 2004                                                              & Random Forest (for multiclass) {[}predictive model{]}                                                                                 \\ \midrule
+Coursetalk Report & 2015 & What Reviews Divulge About Online Education                                                                 & Report portraying the platform's MOOC student's reviews and their polarity. The report investigated the correlation between the course's rating and the most common "latency key-words" which were turned into categories.                                                                                                                                & Not reported                                                                            & Not reported                                                                                                                            \\ \midrule
+Fang, Zang        & 2015 & Sentiment analysis using product review data                                                                & Identification of Amazon review's polarity. The authors use Amazon reviews and focus into the sentiment polarity categorization problem. They propose a framework that deals with negation and run categorization on sentence and review level. In addition, a thorough presentation of the sentiment analysis problem is also depicted.                    & Normalized sentiment score (SS) with starring                                           & {[}Sentence level: 1-manual, 2-machine labeled{]}, {[}Review level: stars{]} | SVM, Naive Bayes (F1) \textgreater Random Forests (F1) \\ \midrule
+Rose et al        & 2014 & Sentiment Analysis in MOOC Discussion Forums: What does it tell us?                                         & Mining collective sentiment from forum posts in a Massive Open Online Course (MOOC) in order to monitor students’ trending opinions towards the course and major course tools, such as lecture and peer-assessment. A correlation between the sentiment ratio measured based on daily forum posts and number of students who drop out each day is observed. & Survival modeling                                                                       & -                                                                                                                                     \\ \midrule
+Ghose et.al     & 2012 & Estimating the Helpfulness and Economic Impact of Product Reviews: Mining Text and Reviewer Characteristics & Identification of product review determinants on helpfulness and impact. Study combines econometric analysis, text mining and predictive modeling. Analysis of the reviews are based on text features identifying text features with high predictive power which are later scored with a regression.                                                        & Normalized sentiment score (SS) with starring                                           & Random Forests                                                                                                                        \\ \midrule
+Bing Liu          & 2012 & Sentiment Analysis and Opinion Mining                                                                       & A thorough theoretical overview on the sentiment analysis problem with insight into the (problem) definition and difficulties eg. negation.                                                                                                                                                                                                                 & -                                                                                       & -                                                                                                                                     \\ \midrule
+Liu and Zhang     & 2012 & A survey of opinion mining and sentiment analysis                                                           & A summarized introduction of Sentiment Analysis with focus on aspect based Sentiment Analysis. Also, on overview of methodologies used by the literature. Special aspects such as sentiment shifting and sarcastic sentences are presented.                                                                                                                 & -                                                                                       & -                                                                                                                                     \\ \midrule
+Hu and Liu        & 2004 & Mining and summarizing customer reviews                                                                     & Applied Sentiment Analysis to summarize product reviews. A sentiment score technique is presented with very effective results.                                                                                                                                                                                                                              & Summed up the sentiment scores of all sentiment words in a sentence or sentence segment & -                                                                                                                                     \\ \bottomrule
+\end{tabular}}
+\caption[Summary of most relevant publications]{\small \centering Summary of relevant related publications}
+\label{t:8}
+\end{table}
+\vspace{-0.5cm}
+
+\begin{table}[h]
+\centering
+%\resizebox{\textwidth}{!}{%
+\begin{tabular}{llcccccc}
+%\begin{tabular}{m{1.5cm}m{5cm}m{0.7cm}m{0.7cm}m{1cm}m{1.3cm}m{1cm}m{1.3cm}}
+\toprule
+          & Variable Name              & min    & max  & mean & median  & sd   & skew	 \\ \toprule
+Course    & Title                      & -    & -    & -       & -    & -        & -        \\
+related   & Course Provider            & -    & -    & -       & -    & -        & -        \\
+variables & Course Institution         & -    & -    & -       & -    & -        & -        \\
+          & Institution Rank           & 1    & 800  & 38      & 83.8 & 2.98     & 7.63      \\
+          & Institution Country        & -    & -    & -       & -    & -        & -         \\
+          & Review Number	       & 1    & 2780 & 9.82	& 4   & 45.69    & 41.58    \\	
+          & Course Price               & 0    & 402  & 189.31  & 223  & 187.34   & -0.05    \\ \midrule
+Student   & Student Name               & -    & -    & -       & -    & -        & -        \\
+related   & Student Anonymity          & 0    & 1    & 0.17    & 0    & 0.38     & 1.73     \\
+variables & Student Status	       & -1   & 1    & 0.96    & 1    & 0.21     & -6.12    \\	
+          & Status Dropped             & 0    & 1    & 0.01    & 0    & 0.07     & 13.75    \\
+          & Status Completed           & 0    & 1    & 0.97    & 1    & 0.18     & -5.13    \\
+          & Status Taking Now          & 0    & 1    & 0.03    & 0    & 0.17     & 5.62     \\
+          & Course Rating              & 0    & 10   & 8.33    & 9    & 2.03     & -2.79    \\
+          & Course Rating (Norm)       & 1    & 5    & 4.05    & 5    & 1.56     & -1.31    \\ \midrule
+Date      & Date (Year)                & 2010 & 2016 & 2013.61 & 2014 & 0.85     & -0.5     \\
+          & Date (Month)               & 1    & 12   & 5.87    & 5    & 3.3      & 0.33     \\ \midrule
+Review    & Word Count                 & 0    & 1334 & 52.8    & 39   & 53.61    & 4.13     \\
+related   & Sentence Count             & 1    & 78   & 3.58    & 3    & 2.88     & 3.88     \\
+variables & Negations Count            & 0    & 31   & 0.98    & 0    & 1.56     & 3.42     \\
+          & Punctuation Count          & 1    & 501  & 5.23    & 4    & 7.49     & 21.64    \\
+          & Caplocks Count             & 0    & 60   & 1.17    & 1    & 1.16     & 20.08    \\
+          & Polarity (Ground Truth)    & -1   & 1    & 0.56    & 1    & 0.81     & -1.35    \\
+          & Polarity (Opinion Lexicon) & -1   & 1    & 0.42    & 1    & 0.83     & -0.92    \\
+          & Polarity (MPAQ)            & -1   & 1    & 0.72    & 1    & 0.57     & -1.95    \\ \bottomrule
+\end{tabular}
+%}
+\caption[Overview of all extracted and inferred variables.]{\small \centering Overview of all extracted and inferred variables.}
+\label{t:variables_all}
+\end{table}
+
+\begin{table}[h]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{m{7cm} m{2.3cm} m{2.3cm} m{2.3cm} m{2.3cm}}
+\toprule
+Provider                      & \begin{tabular}[c]{@{}c@{}}Course\\ Num\end{tabular} & \begin{tabular}[c]{@{}c@{}}Review \\ Num\end{tabular} & \begin{tabular}[c]{@{}c@{}}Review/\\ Course\end{tabular} & \begin{tabular}[c]{@{}c@{}}Average \\ Price\end{tabular} \\ \toprule
+Udemy                         & 5005                                                 & 41539                                                 & 8.30                                                     & 237.59                                                   \\
+edX                           & 510                                                  & 6229                                                  & 12.21                                                    & 6.38                                                     \\
+Coursera                      & 375                                                  & 5670                                                  & 15.12                                                    & 0.00                                                     \\
+Skillshare                    & 224                                                  & 5209                                                  & 23.25                                                    & 0.00                                                     \\
+Udacity                       & 44                                                   & 225                                                   & 5.11                                                     & 0.00                                                     \\
+StraighterLine                & 43                                                   & 873                                                   & 20.30                                                    & 280.51                                                   \\
+Code School                   & 38                                                   & 2686                                                  & 70.68                                                    & 239.00                                                   \\
+Treehouse                     & 37                                                   & 503                                                   & 13.59                                                    & 198.00                                                   \\
+FutureLearn                   & 33                                                   & 43                                                    & 1.30                                                     & 0.00                                                     \\
+The Great Courses             & 25                                                   & 25                                                    & 1.00                                                     & 185.80                                                   \\
+EdCast                        & 24                                                   & 35                                                    & 1.46                                                     & 32.92                                                    \\
+Open2Study                    & 18                                                   & 34                                                    & 1.89                                                     & 0.00                                                     \\
+Stanford Online               & 15                                                   & 240                                                   & 16.00                                                    & 0.00                                                     \\
+OpenLearning                  & 14                                                   & 42                                                    & 3.00                                                     & 26.80                                                    \\
+Edraak                        & 7                                                    & 245                                                   & 35.00                                                    & 0.00                                                     \\
+Textile Learning              & 7                                                    & 14                                                    & 2.00                                                     & 66.00                                                    \\
+Iversity                      & 6                                                    & 8                                                     & 1.33                                                     & 0.00                                                     \\
+Smartly                       & 6                                                    & 17                                                    & 2.83                                                     & 0.00                                                     \\
+Alison                        & 5                                                    & 5                                                     & 1.00                                                     & 0.00                                                     \\
+Codecademy                    & 5                                                    & 49                                                    & 9.80                                                     & 0.00                                                     \\
+Lynda                         & 5                                                    & 5                                                     & 1.00                                                     & 138.00                                                   \\
+NovoEd                        & 5                                                    & 7                                                     & 1.40                                                     & 0.00                                                     \\
+Oxford Royale Academy Prep    & 5                                                    & 12                                                    & 2.40                                                     & 354.40                                                   \\
+Sophia                        & 4                                                    & 4                                                     & 1.00                                                     & 249.00                                                   \\
+tuts+                         & 4                                                    & 5                                                     & 1.25                                                     & 72.00                                                    \\
+First Business MOOC           & 3                                                    & 8                                                     & 2.67                                                     & 0.00                                                     \\
+MRUniversity                  & 3                                                    & 4                                                     & 1.33                                                     & 0.00                                                     \\
+openHPI                       & 3                                                    & 3                                                     & 1.00                                                     & 0.00                                                     \\
+Pluralsight                   & 3                                                    & 3                                                     & 1.00                                                     & 239.00                                                   \\
+Sally Ride Science            & 3                                                    & 7                                                     & 2.33                                                     & 374.00                                                   \\
+Thinkful                      & 3                                                    & 6                                                     & 2.00                                                     & 285.67                                                   \\
+Canvas Network                & 2                                                    & 2                                                     & 1.00                                                     & 0.00                                                     \\
+CareerFoundry                 & 2                                                    & 4                                                     & 2.00                                                     & 0.00                                                     \\
+International Writing Program & 2                                                    & 3                                                     & 1.50                                                     & 0.00                                                     \\
+SchoolKeep                    & 2                                                    & 2                                                     & 1.00                                                     & 312.00                                                   \\
+Coder Manual                  & 1                                                    & 5                                                     & 5.00                                                     & 302.00                                                   \\
+Coggno                        & 1                                                    & 1                                                     & 1.00                                                     & 191.00                                                   \\
+Coursetalk                    & 1                                                    & 5                                                     & 5.00                                                     & 0.00                                                     \\
+Craftsy                       & 1                                                    & 2                                                     & 2.00                                                     & 0.00                                                     \\
+DataCamp                      & 1                                                    & 2                                                     & 2.00                                                     & 198.00                                                   \\
+Ed2Go                         & 1                                                    & 1                                                     & 1.00                                                     & 339.00                                                   \\
+Filtered                      & 1                                                    & 8                                                     & 8.00                                                     & 45.00                                                    \\
+FX Academy                    & 1                                                    & 1                                                     & 1.00                                                     & 0.00                                                     \\
+GoSkills                      & 1                                                    & 1                                                     & 1.00                                                     & 279.00                                                   \\
+IAI Academy                   & 1                                                    & 1                                                     & 1.00                                                     & 0.00                                                     \\
+k-12                          & 1                                                    & 1                                                     & 1.00                                                     & 0.00                                                     \\
+Khan Academy                  & 1                                                    & 1                                                     & 1.00                                                     & 0.00                                                     \\
+MIT                           & 1                                                    & 1                                                     & 1.00                                                     & 0.00                                                     \\
+MongoDB University            & 1                                                    & 1                                                     & 1.00                                                     & 0.00                                                     \\
+One Million by One Million    & 1                                                    & 4                                                     & 4.00                                                     & 5.00                                                     \\
+Openlearning                  & 1                                                    & 42                                                    & 42.00                                                    & 26.80                                                    \\ \midrule
+\textbf{MED}                  & 3                                                    & 6                                                     & 2.00                                                     & 0.00                                                     \\
+\textbf{AVG}                  & 127.57                                               & 1251.82                                               & 6.77                                                     & 91.82                                                    \\ \midrule
+\textbf{TOTAL}                & 6506                                                 & 63843                                                 &                                                          &                                                          \\ \bottomrule
+\end{tabular}%
+}
+\caption[Overview of Coursetalk MOOC providers]{\small \centering Overview of Coursetalk MOOC providers along with provider 
+rating and course number.}
+\label{t:14}
+\end{table}
+\vspace{-0.5cm}
+
+%-----------------------------------------------------------------------------------------------
+% \section{POS Tagging}
+%-----------------------------------------------------------------------------------------------
+\begin{table}[h]
+\centering
+%\resizebox{\textwidth}{!}{%
+\begin{tabular}{m{1cm} m{2cm} m{9cm}}
+\toprule
+\emph{i}      & Tag   & Description                              \\\toprule
+1.     & CC    & Coordinating conjunction                 \\
+2.     & CD    & Cardinal number                          \\
+3.     & DT    & Determiner                               \\
+4.     & EX    & Existential there                        \\
+5.     & FW    & Foreign word                             \\
+6.     & IN    & Preposition or subordinating conjunction \\
+7.     & JJ    & Adjective                                \\
+8.     & JJR   & Adjective, comparative                   \\
+9.     & JJS   & Adjective, superlative                   \\
+10.    & LS    & List item marker                         \\
+11.    & MD    & Modal                                    \\
+12.    & NN    & Noun, singular or mass                   \\
+13.    & NNS   & Noun, plural                             \\
+14.    & NNP   & Proper noun, singular                    \\
+15.    & NNPS  & Proper noun, plural                      \\
+16.    & PDT   & Predeterminer                            \\
+17.    & POS   & Possessive ending                        \\
+18.    & PRP   & Personal pronoun                         \\
+19.    & PRP\$ & Possessive pronoun                       \\
+20.    & RB    & Adverb                                   \\
+21.    & RBR   & Adverb, comparative                      \\
+22.    & RBS   & Adverb, superlative                      \\
+23.    & RP    & Particle                                 \\
+24.    & SYM   & Symbol                                   \\
+25.    & TO    & to                                       \\
+26.    & UH    & Interjection                             \\
+27.    & VB    & Verb, base form                          \\
+28.    & VBD   & Verb, past tense                         \\
+29.    & VBG   & Verb, gerund or present participle       \\
+30.    & VBN   & Verb, past participle                    \\
+31.    & VBP   & Verb, non-3rd person singular present    \\
+32.    & VBZ   & Verb, 3rd person singular present        \\
+33.    & WDT   & Wh-determiner                            \\
+34.    & WP    & Wh-pronoun                               \\
+35.    & WP\$  & Possessive wh-pronoun                    \\
+36.    & WRB   & Wh-adverb                                \\ \bottomrule
+\end{tabular}%
+%}
+\caption[The Penn Tree Bank Project tagset.]{\small \centering The Penn Tree Bank Project tagset.}
+\label{t:16}
+\end{table}
+\vspace{-0.5cm}
+\vspace{-0.4cm}
+\begin{table}[h]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lccccccccccccc}\toprule
+	    & wc          & sentc    & wps      & pct.excl & punct   & case     & neg      & neg.ratio & pos.wds  & neg.wds & tot.op.wds & lex.pol.scr & pol   \\ \toprule
+wc          & 1        & 870**    & 0.373**  & 0.072** & 0.625**  & 0.201**  & 0.723**   & 0.213**  & 0.805** & 0.843**    & 0.902**     & -0.065** & -0.165** \\
+sentc       & 0.870**  & 1        & 0.021**  & 0.133** & 0.642**  & 0.178**  & 0.635**   & 0.059**  & 0.749** & 0.731**    & 0.810**     & 0.005    & -0.104** \\
+wps         & 0.373**  & 0.021**  & 1        &         &          &          &           & 0.481**  & 0.247** & 0.288**    & 0.293**     & -0.056** & -0.140** \\
+pct.excl    & 0.072**  & 0.133**  & -0.061** & 1       & 0.275**  & 0.045**  & 0.050**   & -0.020** & 0.094** & 0.046**    & 0.077**     & 0.058**  & 0.037**  \\
+punct       & 0.625**  & 0.642**  & 0.095**  & 0.275** & 1        & 0.152**  & 0.462**   & 0.079**  & 0.512** & 0.549**    & 0.580**     & -0.057** & -0.097** \\
+case        & 0.201**  & 0.178**  & 0.100**  & 0.045** & 0.152**  & 1        & 0.156**   & 0.066**  & 0.145** & 0.165**    & 0.170**     & -0.027** & -0.038** \\
+neg         & 0.723**  & 0.635**  & 0.269**  & 0.050** & 0.462**  & 0.156**  & 1         & 0.620**  & 0.532** & 0.600**    & 0.620**     & -0.096** & -0.159** \\
+neg.ratio   & 0.213**  & 0.059**  & 0.481**  &         &          &          &           & 1        & 0.109** & 0.163**    & 0.149**     & -0.070** & -0.116** \\
+pos.wds     & 0.805**  & 0.749**  & 0.247**  & 0.094** & 0.512**  & 0.145**  & 0.532**   & 0.109**  & 1       & 0.670**    & 0.912**     & 0.388**  & 0.151**  \\
+neg.wds     & 0.843**  & 0.731**  & 0.288**  & 0.046** & 0.549**  & 0.165**  & 0.600**   & 0.163**  & 0.670** & 1          & 0.915**     & -0.425** & -0.416** \\
+tot.op.wds  & 0.902**  & 0.810**  & 0.293**  & 0.077** & 0.580**  & 0.170**  & 0.620**   & 0.149**  & 0.912** & 0.915**    & 1           & -0.025** & -0.148** \\
+lex.pol.scr & -0.065** & 0.005    & -0.056** & 0.058** & -0.057** & -0.027** & -0.096**  & -0.070** & 0.388** & -0.425**   & -0.025**    & 1        & 0.700**  \\
+pol         & -0.165** & -0.104** & -0.140** & 0.037** & -0.097** & -0.038** & -0.159**  & -0.116** & 0.151** & -0.416**   & -0.148**    & 0.700**  & 1       \\ \bottomrule
+\end{tabular}%
+}
+\caption[Correlation table of all linguistic metrics]{\small \centering Correlation between all linguistic metrics (QTA)}
+\label{t:corr3}
+\end{table}
+\vspace{-0.4cm}
+
+\begin{table}[]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l|ll|ll|ll} \toprule
+   & Drop-Out &                  & Negative Pol &                  & All &                  \\ \toprule
+   & TF-IDF          & Desc.Word & TF-IDF              & Desc.Word & TF-IDF     & Desc.Word \\ \toprule
+1  & 143.866299      & drop             & 5990.6756           & video            & 13.6122143 & place            \\
+2  & 134.590688      & app              & 5111.0743           & son              & 3.4203332  & novice           \\
+3  & 111.888242      & age              & 5080.5044           & cway             & 2.4005488  & comprehend       \\
+4  & 98.634724       & interest         & 4639.648            & info             & 2.1662533  & wow              \\
+5  & 94.284283       & end              & 4579.2052           & program          & 1.9513649  & differences      \\
+6  & 89.969522       & art              & 4564.1087           & student          & 1.638018   & resources        \\
+7  & 89.969522       & man              & 4413.4627           & sign             & 1.5828838  & tom              \\
+8  & 89.969522       & week             & 4405.9458           & lecture          & 1.5108765  & instance         \\
+9  & 81.452413       & lecture          & 4151.2649           & look             & 1.4637971  & event            \\
+10 & 81.452413       & thing            & 4069.2492           & work             & 1.3978741  & optimization     \\
+11 & 77.25302        & form             & 3824.3664           & dev              & 1.3416086  & emails           \\
+12 & 77.25302        & video            & 3816.9737           & clot             & 1.3310227  & errors           \\
+13 & 77.25302        & work             & 3802.1932           & part             & 1.2239347  & interact         \\
+14 & 73.095238       & instructor       & 3787.4194           & want             & 1.069888   & enroll           \\
+15 & 73.095238       & sign             & 3721.0213           & pen              & 1.0590163  & effects          \\
+16 & 68.980873       & top              & 3573.9697           & interest         & 0.991521   & composition      \\
+17 & 64.911892       & english          & 3559.3032           & line             & 0.9701349  & planet           \\
+18 & 64.911892       & prof             & 3508.0264           & web              & 0.9024053  & pros             \\
+19 & 64.911892       & student          & 3274.7602           & point            & 0.8771075  & mistakes         \\
+20 & 60.890449       & program          & 3260.2448           & way              & 0.8452535  & audience         \\
+21 & 56.918913       & gain             & 3252.99             & self             & 0.8409857  & commerce         \\
+22 & 56.918913       & lectures         & 3238.4862           & site             & 0.8144002  & tables           \\
+23 & 52.999902       & ease             & 3231.2372           & present          & 0.8117751  & importance       \\
+24 & 52.999902       & material         & 3223.9901           & view             & 0.8061971  & window           \\
+25 & 52.999902       & star             & 3202.2605           & code             & 0.7730678  & desire           \\
+26 & 49.13632        & clot             & 3115.5187           & students         & 0.7724119  & wishing          \\
+27 & 49.13632        & content          & 2964.4163           & prof             & 0.765526   & task             \\
+28 & 49.13632        & topic            & 2871.3347           & experience       & 0.7409395  & browser          \\
+29 & 45.331414       & courses          & 2857.0463           & courses          & 0.6901589  & team             \\
+30 & 45.331414       & experience       & 2857.0463           & material         & 0.6813176  & learners         \\
+31 & 45.331414       & line             & 2821.3631           & things           & 0.6279696  & waste            \\
+32 & 45.331414       & pen              & 2807.105            & instructor       & 0.6214271  & manner           \\
+33 & 45.331414       & professor        & 2778.615            & bit              & 0.6106335  & development      \\
+34 & 45.331414       & question         & 2750.1603           & cons             & 0.6099795  & someone          \\ \bottomrule
+\end{tabular}%
+}
+\caption[Relevant factors associated with student dissatisfaction.]{\small \centering Overview of salient topics according to drop-out and negative reviews.}
+\label{t:factors}
+\end{table}
+
+\newpage
+\begin{sidewaysfigure}[h]
+ \centering
+ \includegraphics[scale=0.4]{./block_diagram1.jpg}%20160306_coursetalk_sa_mooc_project
+ \caption[Block diagram of the implementation]{\small \centering Block diagram representing the KDD process along with the elements involved. Block diagram describing the KDD 
+ process along with the elements involved. The input and output are described with the arrows. Source: Author's representation} 
+ \label{fig:1}
+\end{sidewaysfigure}
+\newpage
+%-----------------------------------------------------------------
+\chapter*{Eigenst\"{a}ndigkeitserkl\"{a}rung}
+
+Ich erkl\"{a}re hiermit, dass ich die vorliegende Arbeit selbst\"{a}ndig verfasst und noch nicht
+f\"{u}r andere Pr\"{u}fungen eingereicht habe. S\"{a}mtliche Quellen einschließlich Internetquellen,
+die unver\"{a}ndert oder abgewandelt wiedergegeben werden, insbesondere Quellen f\"{u}r
+Texte, Grafiken, Tabellen und Bilder, sind als solche kenntlich gemacht. Mir ist bekannt,
+dass bei Verst\"{o}ßen gegen diese Grunds\"{a}tze ein Verfahren wegen T\"{a}uschungsversuchs
+bzw. T\"{a}uschung eingeleitet wird.
+\vspace{3cm}
+\newcommand*{\SignatureAndDate}[1]{%
+    \par\noindent\makebox[2.5in]{\hrulefill} \hfill\makebox[2.0in]{\hrulefill}%
+    \par\noindent\makebox[2.5in][l]{#1}      \hfill\makebox[2.0in][l]{Student}%
+}%
+\SignatureAndDate{Datum, Ort}
+%-----------------------------------------------------------------
+\end{document}
