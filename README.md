@@ -6,7 +6,7 @@ This is the documentation repository for the master thesis:
 "MOOC Interrupted Determination of Disengagement Factors using
 Sentiment Analysis" at the Humboldt University of Berlin (Sept 2016).
 
-# Abstract of project:
+# Abstract of the project:
 Within the past few years, Massive Online Open Courses (MOOCs), have experienced a
 sudden rise in popularity, reaching thousands of students across the globe and bridging
 limitations that higher education has experienced until present. Despite the great potential
