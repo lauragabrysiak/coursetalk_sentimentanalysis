@@ -1,7 +1,12 @@
-* 1- What the project does:
+* What the project does:
+  The project analyses reviews text and performs following analysis:
+  1- Quantitative Text analysis (review.text)
+  2- Descriptive Statistical Analysis of Non-Textual features (review.data)
+  3- Sentiment Analysis / Polarity classification
+  4- Identification fo Salient terms using TF-IDF and clustering
+  
 * Example usage:
-* How to set up the dev environment
-* 2-License and author info
+
 
 MIT License
 
