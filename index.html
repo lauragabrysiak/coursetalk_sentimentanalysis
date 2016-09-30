@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>MOOC Interrupted  by gralgomez</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>MOOC Interrupted </h1>
+        <p>Determination of disengagement factors using sentiment analysis and TF-IDF</p>
+
+        <p class="view"><a href="https://github.com/gralgomez/moocs_coursetalk_sa">View the Project on GitHub <small>gralgomez/moocs_coursetalk_sa</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/gralgomez/moocs_coursetalk_sa/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/gralgomez/moocs_coursetalk_sa/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/gralgomez/moocs_coursetalk_sa">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>
+<a id="short-description" class="anchor" href="#short-description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Short Description</h3>
+
+<p>This project was implemented as part of a master's thesis in Information Systems at the Humboldt University of Berlin. The project focuses on the automatic identification of salient terms related to student drop-outs among Massive Online Open Courses (MOOCs).</p>
+
+<p>Within the past few years, MOOCs have experienced a sudden rise in popularity, reaching thousands of students across the globe and bridging limitations that higher education has experienced until present. Despite the great potential MOOCs represent to the future of global education, a high drop-out phenomenon (96%)
+has been regularly reported over the years. This project investigates this phenomenon and uses Sentiment Analysis and other Text Mining techniques to identify topics related to the student drop-out. </p>
+
+<h3>
+<a id="structure" class="anchor" href="#structure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Structure</h3>
+
+<p>The project is structured according with the KDD process. The data was self-collected with a crawler written in Python for this project. The data was then normalized. A quantitative text analysis was performed prior to 
+the polarity classification and term extraction to better adapt the classification process. All non-textual features were also analyzed to obtain insights from the dataset. In order to separate negative from positive reviews, a polarity classification was performed using a lexicon-based approach. Furthermore the target data was 
+syntactically annotated in order to identify opinion words and nouns suggesting opinion targets. Finally the TF-IDF score was used in order to identify salient terms which were then clustered. </p>
+
+<h3>
+<a id="files" class="anchor" href="#files" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Files</h3>
+
+<ul>
+<li>
+<p>Python:</p>
+
+<ul>
+<li>urls_extr.py
+Crawler to extract list of courses alongside non textual features and url</li>
+<li>reviews_extr.py: 
+Crawler to extract list of reviews for each selected course</li>
+</ul>
+</li>
+<li>
+<p>R:</p>
+
+<ul>
+<li>url_sel_prep.R
+Course selection process</li>
+<li>reviews_impl.R
+Implementation of the project. Includes review and data (non-textual features) preparation, statistical analysis and quantitative text analysis. The polarity classification is also included and finally the identification of 
+salient terms with TF-IDF.</li>
+</ul>
+</li>
+<li>
+<p>LaTeX:</p>
+
+<ul>
+<li>main_thesis.tex
+LaTeX source of the final thesis pdf.</li>
+<li>main_thesis.bib
+Bibliography of the final thesis. </li>
+</ul>
+</li>
+</ul>
+
+<h3>
+<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+
+<p>The data was extracted from the MOOC platform Coursetalk.com to whom I thank for their support. Otherwise please refer to the paper when using this data or paper.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/gralgomez">gralgomez</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
