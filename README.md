@@ -21,10 +21,10 @@ price, rating and polarity.
 Following repository contains:
 1. The source code for the crawler written in order to extract the data (Py)//
 2. The implementation of the project (R)//
-  2.1. Descriptive Data Analysis
-  2.2. Quantitative Text Analysis
-  2.3. Sentiment Analysis / Polarity Classification
-  2.4. Identification of salient terms using the TF-IDF weighting
+  2.1. Descriptive Data Analysis//
+  2.2. Quantitative Text Analysis//
+  2.3. Sentiment Analysis / Polarity Classification//
+  2.4. Identification of salient terms using the TF-IDF weighting//
 3. Source code of the paper (LaTeX)//
   
 # License and author info
