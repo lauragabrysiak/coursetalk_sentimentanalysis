@@ -12,7 +12,7 @@ sudden rise in popularity, reaching thousands of students across the globe and b
 limitations that higher education has experienced until present. Despite the great potential
 MOOCs represent to the future of global education, a high drop-out phenomenon (96%)
 has been regularly reported over the years. This thesis investigates this phenomenon and uses Sentiment Analysis and other Text Mining techniques to identify topics related to the student drop-out. An en-to-end framework
-is presented including data extraction and preparation, polarity classification and feature
+is presented including data extraction (50K textual reviews) and preparation, polarity classification and feature
 selection. Using the proposed framework, topics related to student dissatisfaction were
 found, supporting findings from previous studies. Furthermore, quantitative text metrics were used to identify linguistic patterns among dissatisfied students’ reviews, finding significant correlations with course features such as
 price, rating and polarity.
