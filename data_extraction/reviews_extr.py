@@ -2,7 +2,7 @@
 # Name: reviews_extractor.py
 # Author: Laura Gabrysiak Gomez
 # Date: 2016/04/10
-# Description: Crawler using transaction file to etract the reviews of selected courses.
+# Description: crawler using transaction file to extract the reviews of selected courses.
 #---------------------------------------------------------------------------------
 import sys
 import re
